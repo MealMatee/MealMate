@@ -1,0 +1,1 @@
+MealMate is a Cafeteria Management System designed and developed by Amrit Bhattarai, Saugat Paneru, Rajnish Kumar Saphi and Dristi Sapkota.
