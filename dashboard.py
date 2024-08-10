@@ -18,19 +18,19 @@ root.iconbitmap("pictures/32432hotbeverage_98916.ico")
 
 
 def i_button1():
-    #function to show message when i button is clicked 
+    '''function to show message when i button is clicked''' 
     tk.messagebox.showinfo("User Login","Click here for Signing in to User Account .")
 
 def i_button2():
-    #function to show message when i button is clicked 
+    '''function to show message when i button is clicked''' 
     tk.messagebox.showinfo("Admin Login","Click here for Signing in to Admin Account .")
 
 def i_button3():
-    #function to show message when i button is clicked 
+    '''function to show message when i button is clicked''' 
     tk.messagebox.showinfo("User Signup","Click here for Creating a new User Account .")
 
 def i_button4():
-    #function to show message when i button is clicked 
+    '''function to show message when i button is clicked''' 
     tk.messagebox.showinfo("Admin Signup","Click here for Creating a new Admin Account .")
    
 def mealmate():
@@ -38,24 +38,25 @@ def mealmate():
 
 
 def user_login():
+    '''this functions contain a frame which consists of the login page'''
     #the main frame
     main_ulogin_frame2=CTkFrame(root)
     main_ulogin_frame2.place(relwidth=1,relheight=1,x=0,y=0)
 
     def reset_successful():
-        #function to destroy top label window and show a message 
+        '''function to destroy top label window and show a message''' 
         usign_sec_qsn_frame.place_forget()
         user_login()
         tk.messagebox.showinfo("Reset Successful","Password reset successful.")
 
 
     def back():
-        #function to open dashboard when back button is clicked  
+        '''function to open dashboard when back button is clicked '''
         main_ulogin_frame2.destroy()
         main()
 
     def click_here():
-        #function to open user signup page when click here button is clicked 
+        '''function to open user signup page when click here button is clicked '''
         main_ulogin_frame2.place_forget()
         user_signup()
 
@@ -89,12 +90,18 @@ def user_login():
             ulogin_e2.configure(show="")
         
     def reset_p1():
+        '''
+        it is made so that we can hide or show password clicking the eye button
+        '''
         if ulogin_etr1.cget("show") == "":
             ulogin_etr1.configure(show="*")
         else:
             ulogin_etr1.configure(show="")
 
     def reset_p2():
+        '''
+        it is made so that we can hide or show password clicking the eye button
+        '''
         if ulogin_etr2.cget("show") == "":
             ulogin_etr2.configure(show="*")
         else:
@@ -117,6 +124,7 @@ def user_login():
 
 
     def sec_qsn():
+        """This function opens the security questions page when called."""
         main_ulogin_frame2.place_forget()
         main_frame1.place_forget()
         global usign_sec_qsn_frame
@@ -180,6 +188,7 @@ def user_login():
 
 
     def reset_pass():
+        """this function opens the reset password page when called."""
         global ulogin_etr1,ulogin_etr2,areset_pass_frame
         usign_sec_qsn_frame.place_forget()
 
@@ -333,18 +342,19 @@ def user_login():
 
 
 def admin_login():
+    """this function opens the admin login page when called."""
     #the main frame 
     main_frame4 = CTkFrame(root)
     main_frame4.place(relwidth = 1, relheight = 1,x = 0, y = 0)
 
     def back():
-        #function to get to dashboard page when back button is clicked 
+        '''function to get to dashboard page when back button is clicked''' 
         main_frame4.place_forget()
         main()
 
 
     def no_account():
-        #function to open admin_signup page when button in dont have an account is clicked
+        '''function to open admin_signup page when button in dont have an account is clicked'''
         main_frame4.place_forget()
         admin_signup()
 
@@ -380,7 +390,6 @@ def admin_login():
         '''
         this function is made to show a message when user clicks submit on win1 window
         '''
-        
         areset_pass_main_frame.place_forget()
         asign_sec_qsn_frame.place_forget()
         areset_pass_frame.place_forget()
@@ -402,6 +411,7 @@ def admin_login():
 
 
     def sec_qsn():
+        """This function opens the security questions page when called."""
         main_frame4.place_forget()
         main_frame1.place_forget()
         global asign_sec_qsn_frame
@@ -461,12 +471,18 @@ def admin_login():
     alogin_eye_imgtk=ImageTk.PhotoImage(alogin_eye_img)
 
     def reset_p1():
+        '''
+        it is made so that we can hide or show password clicking the eye button
+        '''
         if alogin_etr1.cget("show") == "":
             alogin_etr1.configure(show="*")
         else:
             alogin_etr1.configure(show="")
 
     def reset_p2():
+        '''
+        it is made so that we can hide or show password clicking the eye button
+        '''
         if alogin_etr2.cget("show") == "":
             alogin_etr2.configure(show="*")
         else:
@@ -474,6 +490,7 @@ def admin_login():
 
 
     def reset_pass():
+        """this function opens the reset password page when called"""
         global ulogin_etr2,areset_pass_frame,alogin_etr1,alogin_etr2,areset_pass_main_frame
         asign_sec_qsn_frame.place_forget()
 
@@ -619,6 +636,7 @@ def admin_login():
 
 
 def user_signup():
+    '''This function opens the user signup page when called.'''
 
 
 #the main frame
@@ -627,13 +645,14 @@ def user_signup():
 
 
     def usignup_but():
-        #function to open user login page after clicking signup button
+        '''function to open user login page after clicking signup button'''
+        tk.messagebox.showinfo("Success/Security_info","Signup validated! Now you need to fill the security questions so that you can reset your password in case if you forgot it by filling the questions . ")
         main_frame3.place_forget()
         sec_qsn()
 
 
     def back():
-       #function to open dashboard when back  utton is clicked 
+       '''function to open dashboard when back  button is clicked '''
        main_frame3.place_forget()
        main()
 
@@ -641,7 +660,7 @@ def user_signup():
 
 
     def already_acc():
-        #function to open user login page when click here button is clicked in already have an account
+        '''function to open user login page when click here button is clicked in already have an account'''
         main_frame3.place_forget()
         user_login()
 
@@ -671,7 +690,6 @@ def user_signup():
         '''
         this function is made to show a message when user clicks submit on win1 window
         '''
-        
         usign_sec_qsn_frame.place_forget()  
         user_login()       
         tk.messagebox.showinfo("Successful Message ","Security questions Entry Successful !")
@@ -682,6 +700,7 @@ def user_signup():
 
 
     def sec_qsn():
+        '''This function opens the security questions page when called.'''
         main_frame1.place_forget()
         global usign_sec_qsn_frame
         
@@ -739,7 +758,7 @@ def user_signup():
 
 
 
-
+#making images global
     global tksignup_eye,tkusignup_i,photo_usignup_logo,usignup_backtk,photosignup_image1
     
 
@@ -862,18 +881,20 @@ def user_signup():
 
 
 def admin_signup():
+    '''This function opens the admin signup page when called.'''
     #the main frame
     main_frame5=CTkFrame(root)
     main_frame5.place(relwidth=1,relheight=1,x=0,y=0)
 
 
     def asignup_but():
-        #function to open admin login page after signup
+        '''function to open admin login page after signup'''
+        tk.messagebox.showinfo("Success/Security_info","Signup validated! Now you need to fill the security questions so that you can reset your password in case if you forgot it by filling the questions . ")
         main_frame5.place_forget()
         asec_qsn()
 
     def back():
-        #function to open dashboard when back button is clicked 
+        '''function to open dashboard when back button is clicked '''
         main_frame5.place_forget()
         main()
 
@@ -881,7 +902,7 @@ def admin_signup():
 
 
     def already_acc():
-        #function for click here ]button in already have an account
+        '''function for click here ]button in already have an account'''
         main_frame5.place_forget()
         admin_login()
 
@@ -922,6 +943,7 @@ def admin_signup():
 
 
     def asec_qsn():
+        '''This function opens the security questions page when called.'''
         main_frame5.place_forget()
         main_frame1.place_forget()
         global asign_sec_qsn_frame
@@ -1100,6 +1122,7 @@ def admin_signup():
     pass
 
 def admin_dashboard():
+    '''This function opens the admin dashboard page when called.'''
     # the main frame
     main_frame6=CTkFrame(root,fg_color="Black")
     main_frame6.place(relheight=1,relwidth=1,relx=0,rely=0)
@@ -1110,7 +1133,7 @@ def admin_dashboard():
         admin_db_btn2.configure(image=a_db_img5ctk,text_color="#33303C",fg_color="#F38686",hover_color="#F38686")
 
     def off_hover(leave):
-        '''to change the text colour and image of button on enxiting the widget'''
+        '''to change the text colour and image of button on exiting the widget'''
         admin_db_btn2.configure(image=a_db_img1ctk,text_color="#DD2323",fg_color="#D9D9D9")
 
 
@@ -1120,35 +1143,39 @@ def admin_dashboard():
         admin_db_btn3_lbl.configure(image=a_db_img6ctk,fg_color="#F38686",bg_color="#F38686")
 
     def off_hover2(leave):
-        '''to change the text colour and image of button on enxiting the widget'''
+        '''to change the text colour and image of button on exiting the widget'''
         admin_db_btn3.configure(text_color="#DD2323",fg_color="#D9D9D9")
         admin_db_btn3_lbl.configure(image=a_db_img2ctk,fg_color="#D9D9D9",bg_color="#D9D9D9")
 
 
     def on_hover3(enter):
-        #to change the text colour and image of button on entering the widget
+        '''to change the text colour and image of button on entering the widget'''
         admin_db_btn4.configure(image=a_db_img7ctk,text_color="#33303C",fg_color="#F38686",hover_color="#F38686")
 
     def off_hover3(leave):
-        #to change the text colour and image of button on enxiting the widget
+        '''to change the text colour and image of button on exiting the widget'''
         admin_db_btn4.configure(image=a_db_img3ctk,text_color="#DD2323",fg_color="#D9D9D9")
 
 
     def on_hover4(enter):
-        #to change the text colour and image of button on entering the widget
+        '''to change the text colour and image of button on entering the widget'''
         admin_db_btn5.configure(image=a_db_img8ctk,text_color="#33303C",fg_color="#F38686",hover_color="#F38686")
 
     def off_hover4(leave):
-        #to change the text colour and image of button on enxiting the widget
+        '''to change the text colour and image of button on exiting the widget'''
         admin_db_btn5.configure(image=a_db_img4ctk,text_color="#DD2323",fg_color="#D9D9D9")
 
     def go_to_dash():
+        '''this function is made to ask yes no question and if the
+        answer is yes then a messagebox would be shown when logout button is clicked and dashboard page is opened'''
         admin_logout=tk.messagebox.askyesno("Logout?","Are you sure you want to log out?")
         if admin_logout==1:
             main_frame6.place_forget()
             main()
 
     def a_db_exit():
+        '''this function is made to ask yes no question to exit the page or not and if answer is yes then a messagebox is 
+        shown and the root window is destroyed'''
         response = tk.messagebox.askyesno("Exit", "Are you sure you want to exit?")
         if response==1:
             root.destroy()
@@ -1156,6 +1183,7 @@ def admin_dashboard():
     global admin_db_frame3,admin_db_btn2,admin_db_btn3,admin_db_btn4,admin_db_btn3_lbl,photo_a_db_logo,admin_db_btn6,a_db_img9tk
 
     def dashboard_frame_ad():
+        '''This function opens the dashboard frame when called.'''
         global s_f_frame,admin_db_frame3,admin_db_customer_frame
         #dashboard frame
         admin_db_frame3=tk.Frame(main_frame6,bg="White")
@@ -1547,7 +1575,7 @@ def admin_dashboard():
 
 
 
-    #top frame that coontains logo,item name entrybox and other widgets
+    #top frame that contains logo,item name entrybox and other widgets
     admin_db_frame1=tk.Frame(main_frame6,bg="#D9D9D9")
     admin_db_frame1.place(relwidth=1,relheight=0.11,x=0,y=0)
 
@@ -1582,6 +1610,7 @@ def admin_dashboard():
     a_db_lbl5=tk.Label(a_db_btn9,text="Page:",fg="#33303C",font=("Regular",15),bg="#D9D9D9")
     a_db_lbl5.place(relx=0.12,rely=0.05)
 
+#the frame that consists all the management system heading and dashboard, exit, logout,customers and items button
     admin_db_frame2=CTkFrame(main_frame6,corner_radius=10,fg_color="#33303C")
     admin_db_frame2.place(relheight=0.879,relwidth=0.3,relx=0,rely=0.12)
 
@@ -1663,11 +1692,16 @@ def admin_dashboard():
     dashboard_frame_ad()
 
 def user_dashboard():
+    '''This function opens the user dashboard page when called.'''
 
     u_db_mainframe=CTkFrame(root,fg_color="black")
     u_db_mainframe.place(relwidth=1,relheight=1,x=0,y=0)
     global photo_u_db_logo
+
     def foods():
+        """this function is made so that when foods menu in menubutton is clicked,the buttons that dont contain foods are forgotten
+        and the buttons that contains foods are displayed in correct order"""
+
         u_db_menubutton.config(text="Foods  ▼")
         u_db_button3.grid_forget()
         u_db_button4.grid_forget()
@@ -1677,7 +1711,6 @@ def user_dashboard():
         u_db_button10.grid_forget()
         u_db_button12.grid_forget()
         u_db_button13.grid_forget()
-
 
 
         u_db_button1.grid(row=0,column=0,padx=10,pady=10)
@@ -1691,6 +1724,9 @@ def user_dashboard():
         pass
 
     def drinks():
+        """this function is made so that when drinks menu in menubutton is clicked,the buttons that dont contain drinks are forgotten
+        and the buttons that contains drinks are displayed in correct order"""
+
         u_db_menubutton.config(text="Drinks  ▼")
         u_db_button1.grid_forget()
         u_db_button2.grid_forget()
@@ -1883,6 +1919,7 @@ def user_dashboard():
 
 
     def main_menu():
+        """this function contains the scrollable frame which contains all the buttons with items and images."""
         u_db_menubutton.config(text="All Items  ▼")
         #making images global 
         global photo_u_db_img3tk,photo_u_db_img4tk,photo_u_db_img5tk,photo_u_db_img6tk,photo_u_db_img7tk,photo_u_db_img8tk,photo_u_db_img9tk,photo_u_db_img10tk,photo_u_db_img11tk,photo_u_db_img12tk,photo_u_db_img13tk,photo_u_db_img14tk,photo_u_db_img15tk,photo_u_db_img16tk,photo_u_db_img17tk
@@ -2131,19 +2168,19 @@ def user_dashboard():
     u_db_frame3=CTkFrame(u_db_mainframe,corner_radius=12,fg_color="#D9D9D9")
     u_db_frame3.place(relwidth=0.45,relheight=0.72,relx=0.5,rely=0.13)
 
-    #label
+    #s.n label
     u_db_lbl2=tk.Label(u_db_frame3,text="S.N",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
     u_db_lbl2.place(relx=0.04,rely=0.03)
 
-    #label
+    #Product Name label
     u_db_lbl3=tk.Label(u_db_frame3,text="Product Name",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
     u_db_lbl3.place(relx=0.26,rely=0.03)
 
-    #label
+    #Quantity label
     u_db_lbl4=tk.Label(u_db_frame3,text="Quantity",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
     u_db_lbl4.place(relx=0.61,rely=0.03)
 
-    #label
+    #Price label
     u_db_lbl5=tk.Label(u_db_frame3,text="Price",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
     u_db_lbl5.place(relx=0.85,rely=0.03)
 
@@ -2175,8 +2212,10 @@ def user_dashboard():
 
 
 def main():
+    """This function opens the main page when called."""
 
     def exit():
+        """this function is made to ask a yes-no question to the user when exit button is clicked and if the user clicks yes then the root is destroyed. """
         response = tk.messagebox.askyesno("Exit", "Are you sure you want to exit?")
         if response==1:
             root.destroy()
@@ -2184,7 +2223,7 @@ def main():
 
 
     global main_frame1
-    #the mian frame
+    #the main frame
     main_frame1=tk.Frame(root)
     main_frame1.place(relheight=1,relwidth=1,x=0,y=0)
     #background image
