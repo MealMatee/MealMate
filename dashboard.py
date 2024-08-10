@@ -1710,13 +1710,16 @@ def user_dashboard():
 
 
     def logout_but():
+        """this function is made to ask a yesno question when button is clicked and open dashboard page when yes is clicked."""
         user_logout=tk.messagebox.askyesno("Logout?","Are you sure you want to log out?")
         if user_logout==1:
             u_db_mainframe.place_forget()
             main()
 
     def custom_confirm():
+        """this function is created to destroy customize_win and show a message user profile customization successful."""
         customize_win.destroy()
+        tk.messagebox.showinfo("success message","user profile customization successful")
 
 
 
@@ -1724,6 +1727,7 @@ def user_dashboard():
 
 
     def customize():
+        """this function is made to create a top label window when customize profile button is cliclked """
 
         global customize_win
         def u_db_onclick2():
