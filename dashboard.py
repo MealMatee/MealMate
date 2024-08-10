@@ -188,7 +188,7 @@ def user_login():
 
 
     def reset_pass():
-        """this function opens the reset password page when called"""
+        """this function opens the reset password page when called."""
         global ulogin_etr1,ulogin_etr2,areset_pass_frame
         usign_sec_qsn_frame.place_forget()
 
@@ -342,7 +342,7 @@ def user_login():
 
 
 def admin_login():
-    """this function opens the admin login page when called"""
+    """this function opens the admin login page when called."""
     #the main frame 
     main_frame4 = CTkFrame(root)
     main_frame4.place(relwidth = 1, relheight = 1,x = 0, y = 0)
@@ -646,12 +646,13 @@ def user_signup():
 
     def usignup_but():
         '''function to open user login page after clicking signup button'''
+        tk.messagebox.showinfo("Success/Security_info","Signup validated! Now you need to fill the security questions so that you can reset your password in case if you forgot it by filling the questions . ")
         main_frame3.place_forget()
         sec_qsn()
 
 
     def back():
-       '''function to open dashboard when back  utton is clicked '''
+       '''function to open dashboard when back  button is clicked '''
        main_frame3.place_forget()
        main()
 
@@ -689,7 +690,6 @@ def user_signup():
         '''
         this function is made to show a message when user clicks submit on win1 window
         '''
-        
         usign_sec_qsn_frame.place_forget()  
         user_login()       
         tk.messagebox.showinfo("Successful Message ","Security questions Entry Successful !")
@@ -758,7 +758,7 @@ def user_signup():
 
 
 
-
+#making images global
     global tksignup_eye,tkusignup_i,photo_usignup_logo,usignup_backtk,photosignup_image1
     
 
@@ -889,6 +889,7 @@ def admin_signup():
 
     def asignup_but():
         '''function to open admin login page after signup'''
+        tk.messagebox.showinfo("Success/Security_info","Signup validated! Now you need to fill the security questions so that you can reset your password in case if you forgot it by filling the questions . ")
         main_frame5.place_forget()
         asec_qsn()
 
@@ -1132,7 +1133,7 @@ def admin_dashboard():
         admin_db_btn2.configure(image=a_db_img5ctk,text_color="#33303C",fg_color="#F38686",hover_color="#F38686")
 
     def off_hover(leave):
-        '''to change the text colour and image of button on enxiting the widget'''
+        '''to change the text colour and image of button on exiting the widget'''
         admin_db_btn2.configure(image=a_db_img1ctk,text_color="#DD2323",fg_color="#D9D9D9")
 
 
@@ -1142,7 +1143,7 @@ def admin_dashboard():
         admin_db_btn3_lbl.configure(image=a_db_img6ctk,fg_color="#F38686",bg_color="#F38686")
 
     def off_hover2(leave):
-        '''to change the text colour and image of button on enxiting the widget'''
+        '''to change the text colour and image of button on exiting the widget'''
         admin_db_btn3.configure(text_color="#DD2323",fg_color="#D9D9D9")
         admin_db_btn3_lbl.configure(image=a_db_img2ctk,fg_color="#D9D9D9",bg_color="#D9D9D9")
 
@@ -1182,7 +1183,7 @@ def admin_dashboard():
     global admin_db_frame3,admin_db_btn2,admin_db_btn3,admin_db_btn4,admin_db_btn3_lbl,photo_a_db_logo,admin_db_btn6,a_db_img9tk
 
     def dashboard_frame_ad():
-        '''This function opens the sdashboard frame when called.'''
+        '''This function opens the dashboard frame when called.'''
         global s_f_frame,admin_db_frame3,admin_db_customer_frame
         #dashboard frame
         admin_db_frame3=tk.Frame(main_frame6,bg="White")
