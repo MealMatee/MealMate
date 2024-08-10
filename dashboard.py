@@ -17,6 +17,16 @@ root.iconbitmap("pictures/32432hotbeverage_98916.ico")
 
 
 
+
+
+
+#-------------------------------------------i_buttons for main dashboard--------------------------------------------------#
+
+
+
+
+
+
 def i_button1():
     '''function to show message when i button is clicked''' 
     tk.messagebox.showinfo("User Login","Click here for Signing in to User Account .")
@@ -33,15 +43,28 @@ def i_button4():
     '''function to show message when i button is clicked''' 
     tk.messagebox.showinfo("Admin Signup","Click here for Creating a new Admin Account .")
    
+
+
+
+
+
+#----------------------------------------------------button about MealMate--------------------------------------------------------#
 def mealmate():
     pass
 
 
+
+
+
+
+#----------------------------------------------User Login--------------------------------------------------------------------------#
 def user_login():
     '''this functions contain a frame which consists of the login page'''
     #the main frame
     main_ulogin_frame2=CTkFrame(root)
     main_ulogin_frame2.place(relwidth=1,relheight=1,x=0,y=0)
+
+
 
     def reset_successful():
         '''function to destroy top label window and show a message''' 
@@ -50,10 +73,14 @@ def user_login():
         tk.messagebox.showinfo("Reset Successful","Password reset successful.")
 
 
+
+
     def back():
         '''function to open dashboard when back button is clicked '''
         main_ulogin_frame2.destroy()
         main()
+
+
 
     def click_here():
         '''function to open user signup page when click here button is clicked '''
@@ -80,6 +107,8 @@ def user_login():
         
 
 
+
+
     def onclick():
         '''
         it is made so that we can hide or show password clicking the eye button
@@ -88,7 +117,9 @@ def user_login():
             ulogin_e2.configure(show="*")
         else:
             ulogin_e2.configure(show="")
-        
+
+
+
     def reset_p1():
         '''
         it is made so that we can hide or show password clicking the eye button
@@ -119,7 +150,7 @@ def user_login():
         tk.messagebox.showinfo("Successful Message ","Login Successful !")
         main_ulogin_frame2.place_forget()
         user_dashboard()
-        pass   
+          
 
 
 
@@ -185,6 +216,10 @@ def user_login():
 
     ulogin_eye_img=Image.open("pictures//Vectorblack_eye1.png")
     ulogin_eye_imgtk=ImageTk.PhotoImage(ulogin_eye_img)
+
+
+
+    #--------------------------------reset password------------------------------------#
 
 
     def reset_pass():
@@ -333,6 +368,7 @@ def user_login():
 
 
 
+#------------------------------------------admin login--------------------------------------------------------------#
 
 
 
@@ -395,7 +431,7 @@ def admin_login():
         areset_pass_frame.place_forget()
         admin_login()        
         tk.messagebox.showinfo("Successful Message ","Security questions Entry Successful !")
-        pass
+        
 
     def login():
         """
@@ -408,7 +444,7 @@ def admin_login():
         pass      
         
 
-
+    #---------------------------security question page---------------------------------------------#
 
     def sec_qsn():
         """This function opens the security questions page when called."""
@@ -470,6 +506,8 @@ def admin_login():
     alogin_eye_img=Image.open("pictures//Vectorblack_eye1.png")
     alogin_eye_imgtk=ImageTk.PhotoImage(alogin_eye_img)
 
+
+
     def reset_p1():
         '''
         it is made so that we can hide or show password clicking the eye button
@@ -489,6 +527,8 @@ def admin_login():
             alogin_etr2.configure(show="")
 
 
+
+  #--------------------------------reset password page (admin)---------------------------------------------#
     def reset_pass():
         """this function opens the reset password page when called"""
         global ulogin_etr2,areset_pass_frame,alogin_etr1,alogin_etr2,areset_pass_main_frame
@@ -630,7 +670,13 @@ def admin_login():
     alogin_btn5.place(relx=0.048,rely=0.903)
 
 
-    pass
+    
+
+
+
+#-------------------------------------------------------user signup---------------------------------------------------------------#
+
+
 
 
 
@@ -694,8 +740,10 @@ def user_signup():
         user_login()       
         tk.messagebox.showinfo("Successful Message ","Security questions Entry Successful !")
 
-        pass
+        
 
+
+   #-------------------------------------------security questions page-------------------------------------------------#
 
 
 
@@ -876,7 +924,19 @@ def user_signup():
     #back button 
     usignup_btn1=tk.Button(usignup_f1,image=usignup_backtk,text=" Back",compound=LEFT,bg="#262731",activebackground="#262731",bd=0,font=("Inter",13),fg="White",activeforeground="White",command=back)
     usignup_btn1.place(relx=0.048,rely=0.94)
-    pass
+    
+
+
+
+
+
+
+  #-----------------------------------------------------admin signup---------------------------------------------------#
+
+
+
+
+
  
 
 
@@ -939,7 +999,7 @@ def admin_signup():
 
     
 
-
+  #--------------------------------------------security question page(admin)----------------------------------------------------#
 
 
     def asec_qsn():
@@ -998,10 +1058,14 @@ def admin_signup():
     #the submit button
         asec_button1=CTkButton(asec_frame2,text="SUBMIT",fg_color="#003554",text_color="White",font=("Inter",18,"bold"),command=security_info)
         asec_button1.place(relx=0.22,rely=0.8,relwidth=0.52,relheight=0.07)
-        pass
+        
+
+
 
     def message():
         tk.messagebox.showinfo("Security question message","Security question must be answered. In case if you forgot your password, then this will help you reset your password .")
+
+
 
     global tksignup_eye,tkasignup_i,photo_asignup_logo,asignup_backtk,photosignup_image1,areset_pass_frame
 
@@ -1119,7 +1183,15 @@ def admin_signup():
     
 
 
-    pass
+    
+
+
+#-------------------------------------------------------admin dashboard-------------------------------------------------------------#
+
+
+
+
+
 
 def admin_dashboard():
     '''This function opens the admin dashboard page when called.'''
@@ -1164,6 +1236,8 @@ def admin_dashboard():
     def off_hover4(leave):
         '''to change the text colour and image of button on exiting the widget'''
         admin_db_btn5.configure(image=a_db_img4ctk,text_color="#DD2323",fg_color="#D9D9D9")
+   
+
 
     def go_to_dash():
         '''this function is made to ask yes no question and if the
@@ -1173,6 +1247,8 @@ def admin_dashboard():
             main_frame6.place_forget()
             main()
 
+
+
     def a_db_exit():
         '''this function is made to ask yes no question to exit the page or not and if answer is yes then a messagebox is 
         shown and the root window is destroyed'''
@@ -1180,7 +1256,18 @@ def admin_dashboard():
         if response==1:
             root.destroy()
 
+
+
+
     global admin_db_frame3,admin_db_btn2,admin_db_btn3,admin_db_btn4,admin_db_btn3_lbl,photo_a_db_logo,admin_db_btn6,a_db_img9tk
+
+
+
+
+
+        #----------------------------------------dashboard main frame------------------------------------------------#
+
+
 
     def dashboard_frame_ad():
         '''This function opens the dashboard frame when called.'''
@@ -1245,7 +1332,13 @@ def admin_dashboard():
         
 
 
-        pass
+        
+
+        #-----------------------------------admin_customize_items frame-------------------------------------------------------#
+
+
+
+
 
 
     def items_frame_ad():
@@ -1517,7 +1610,12 @@ def admin_dashboard():
         u_db_label15=tk.Label(u_db_button15,text="Name: Chicken Biryani\n   Price: Rs.250",font=("Inter",15),bg="#D9D9D9")
         u_db_label15.place(relx=0.1,rely=0.6)
 
-        pass
+        
+
+
+
+
+        #-----------------------------------------------customize_customers frame---------------------------------------------------#
 
 
 
@@ -1566,11 +1664,9 @@ def admin_dashboard():
 
         admin_db_btn3.bind("<Enter>", on_hover2)
         admin_db_btn3.bind("<Leave>", off_hover2)
-        
-        pass
+    
 
-
-
+       #--------------end of frames-------------------#
 
 
 
@@ -1691,12 +1787,28 @@ def admin_dashboard():
 
     dashboard_frame_ad()
 
+
+
+
+
+
+
+#----------------------------------------------------useritems dashboard-------------------------------------------------------#
+
+
+
+
+
+
+
 def user_dashboard():
     '''This function opens the user dashboard page when called.'''
 
     u_db_mainframe=CTkFrame(root,fg_color="black")
     u_db_mainframe.place(relwidth=1,relheight=1,x=0,y=0)
     global photo_u_db_logo
+
+    #----------------foood menu-------------------#
 
     def foods():
         """this function is made so that when foods menu in menubutton is clicked,the buttons that dont contain foods are forgotten
@@ -1721,7 +1833,11 @@ def user_dashboard():
         u_db_button14.grid(row=1,column=0,rowspan=1,padx=0,pady=0)
         u_db_button15.grid(row=1,column=2,rowspan=1,padx=10,pady=10)
 
-        pass
+        
+
+        #-----------------------drinks menu--------------------------#
+
+
 
     def drinks():
         """this function is made so that when drinks menu in menubutton is clicked,the buttons that dont contain drinks are forgotten
@@ -1745,6 +1861,9 @@ def user_dashboard():
         u_db_button12.grid(row=2,column=0,padx=10,pady=10)
 
 
+
+
+
     def logout_but():
         """this function is made to ask a yesno question when button is clicked and open dashboard page when yes is clicked."""
         user_logout=tk.messagebox.askyesno("Logout?","Are you sure you want to log out?")
@@ -1757,6 +1876,11 @@ def user_dashboard():
         customize_win.destroy()
         tk.messagebox.showinfo("success message","user profile customization successful")
 
+
+
+
+
+    #-----------------------------------user customization profile------------------------------------------#
 
 
 
@@ -1915,7 +2039,7 @@ def user_dashboard():
     u_db_btn3.place(relwidth=0.06,relheight=0.45,relx=0.93,rely=0.3)
 
 
-
+    #------------------------------------items' main menu-----------------------------------------#
 
 
     def main_menu():
@@ -2205,7 +2329,16 @@ def user_dashboard():
 
 
 
-    
+
+
+
+
+
+#-------------------------------------------------------Main Dashboard---------------------------------------------------------#
+
+
+
+
 
 
 
@@ -2301,3 +2434,8 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+
+
+#----------------------------------------------------------END----------------------------------------------------------------#
