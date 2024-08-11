@@ -1,6 +1,7 @@
 from customtkinter import *
 from PIL import Image,ImageTk
 import tkinter as tk
+import sqlite3
 
 root=CTk()
 
@@ -529,6 +530,8 @@ def admin_login():
 
 
   #--------------------------------reset password page (admin)---------------------------------------------#
+
+
     def reset_pass():
         """this function opens the reset password page when called"""
         global ulogin_etr2,areset_pass_frame,alogin_etr1,alogin_etr2,areset_pass_main_frame
@@ -690,11 +693,62 @@ def user_signup():
     main_frame3.place(relwidth=1,relheight=1,x=0,y=0)
 
 
+
     def usignup_but():
         '''function to open user login page after clicking signup button'''
-        tk.messagebox.showinfo("Success/Security_info","Signup validated! Now you need to fill the security questions so that you can reset your password in case if you forgot it by filling the questions . ")
-        main_frame3.place_forget()
-        sec_qsn()
+        #creating the database
+        conn = sqlite3.connect("mealmate.db")
+        #'cursor()' for executing the queries
+        c = conn.cursor()
+        #creating user registration table
+        c.execute('''CREATE TABLE IF NOT EXISTS user 
+                  ( 
+                   first_name TEXT, 
+                   last_name TEXT, 
+                   email TEXT, 
+                   password TEXT,
+                  sec_ans1,
+                  sec_ans2,
+                  sec_ans3
+                   )''')
+        
+        #checking if the entry boxes are filled and entered the valid credentials
+
+        if usignup_e1.get() == '' or usignup_e2.get() == '' or usignup_e3.get() == '' or usignup_e4.get() == '' or usignup_e5.get() == '' or usignup_e1.get() == 'firstname' or usignup_e2.get() == 'lastname' or usignup_e3.get() == 'example@gmail.com':
+            tk.messagebox.showerror("Error", "Please fill all the required fields!")
+
+
+        elif '@gmail.com' not in usignup_e3.get() or len(usignup_e3.get()) <= 10 or ' ' in usignup_e3.get():
+            #show error
+            tk.messagebox.showerror("Error", "Please enter a valid email address!")
+
+
+        elif usignup_e4.get() != usignup_e5.get():
+            #show error
+            tk.messagebox.showerror("Error", "Passwords do not match!")
+
+
+        elif len(usignup_e4.get()) < 8 :
+            #show error
+            tk.messagebox.showerror("Error", "Password should be at least 8 characters long!")
+        
+
+        else:
+            #inserting data into the database
+            c.execute('''INSERT INTO user (first_name, last_name, email, password) 
+                         VALUES (?,?,?,?)''',
+                         (usignup_e1.get(),usignup_e2.get(),usignup_e3.get(),usignup_e4.get())
+                     )
+            conn.commit()
+            conn.close()
+
+
+            tk.messagebox.showinfo("Success/Security_info","Signup validated! Now you need to fill the security questions so that you can reset your password in case if you forgot it by filling the questions . ")
+            main_frame3.place_forget()
+            sec_qsn()
+
+
+
 
 
     def back():
@@ -734,11 +788,36 @@ def user_signup():
 
     def security_info():
         '''
-        this function is made to show a message when user clicks submit on win1 window
+        this function is made to show a message when user clicks submit on the security question page
         '''
-        usign_sec_qsn_frame.place_forget()  
-        user_login()       
-        tk.messagebox.showinfo("Successful Message ","Security questions Entry Successful !")
+
+
+
+        #----------------------------DATABASE--------------------------#
+
+
+
+
+        #checking if the entry is filled or not
+        if usec_entry1.get() == '' or usec_entry2.get() == '' or usec_entry3.get() == '':
+            tk.messagebox.showerror("Error", "Please fill all the required fields!")
+        elif usec_entry1.get().isdigit() == False:
+            tk.messagebox.showerror("Error", "Please enter a number in the first field!")
+        else:
+
+           #inserting security answers to the database
+            conn = sqlite3.connect("mealmate.db")
+            c = conn.cursor()
+            
+            #updating security questions
+            c.execute('''UPDATE user SET sec_ans1 = ?, sec_ans2 = ?, sec_ans3 = ?
+             WHERE first_name = ? and email = ?''',
+             (usec_entry1.get(), usec_entry2.get(), usec_entry3.get(), usignup_e1.get(), usignup_e3.get()))
+            conn.commit()
+            conn.close()
+            usign_sec_qsn_frame.place_forget()  
+            user_login()       
+            tk.messagebox.showinfo("Successful Message ","Security questions Entry Successful !")
 
         
 
@@ -750,7 +829,7 @@ def user_signup():
     def sec_qsn():
         '''This function opens the security questions page when called.'''
         main_frame1.place_forget()
-        global usign_sec_qsn_frame
+        global usign_sec_qsn_frame,usec_entry1,usec_entry2,usec_entry3
         
         usign_sec_qsn_frame=tk.Frame(root)
         usign_sec_qsn_frame.place(relheight=1,relwidth=1,x=0,y=0)
@@ -849,7 +928,7 @@ def user_signup():
     #the main frame
     usignup_f1=CTkFrame(usignup_frame,bg_color="transparent",corner_radius=10,fg_color="#262731",width=681,height=900)
     usignup_f1.place(x=100,y=39,w=681,h=900)
-
+    global usignup_e1,usignup_e2,usignup_e3,usignup_e4,usignup_e5
     #sep frame
     sep_frame=tk.Frame(usignup_f1,bg="Black")
     sep_frame.place(relwidth=1,relheight=0.02,rely=0.2)
