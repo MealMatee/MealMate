@@ -739,6 +739,9 @@ def user_signup():
                          VALUES (?,?,?,?)''',
                          (usignup_e1.get(),usignup_e2.get(),usignup_e3.get(),usignup_e4.get())
                      )
+            
+
+            #saving the changes made in the database
             conn.commit()
             conn.close()
 
@@ -1028,9 +1031,59 @@ def admin_signup():
 
     def asignup_but():
         '''function to open admin login page after signup'''
-        tk.messagebox.showinfo("Success/Security_info","Signup validated! Now you need to fill the security questions so that you can reset your password in case if you forgot it by filling the questions . ")
-        main_frame5.place_forget()
-        asec_qsn()
+
+        #creating the database
+        conn = sqlite3.connect("mealmate.db")
+        #'cursor()' for executing the queries
+        c = conn.cursor()
+        #creating admin registration table
+        c.execute('''CREATE TABLE IF NOT EXISTS admin 
+                  ( 
+                   first_name TEXT, 
+                   last_name TEXT, 
+                   email TEXT, 
+                   password TEXT,
+                  sec_ans1,
+                  sec_ans2,
+                  sec_ans3
+                   )''')
+
+        #checking if the entry boxes are filled and entered the valid credentials
+
+        if asignup_e1.get() == '' or asignup_e2.get() == '' or asignup_e3.get() == '' or asignup_e4.get() == '' or asignup_e5.get() == '' or asignup_e1.get() == 'firstname' or asignup_e2.get() == 'lastname' or asignup_e3.get() == 'example@admin.gmail.com':
+            tk.messagebox.showerror("Error", "Please fill all the required fields!")
+
+
+        elif '@admin.gmail.com' not in asignup_e3.get() or len(asignup_e3.get()) <= 16 or ' ' in asignup_e3.get():
+            #show error
+            tk.messagebox.showerror("Error", "Please enter a valid email address!")
+
+
+        elif asignup_e4.get() != asignup_e5.get():
+            #show error
+            tk.messagebox.showerror("Error", "Passwords do not match!")
+
+
+        elif len(asignup_e4.get()) < 8 :
+            #show error
+            tk.messagebox.showerror("Error", "Password should be at least 8 characters long!")
+        
+
+        else:
+            #inserting data into the database (admin)
+            c.execute('''INSERT INTO admin (first_name, last_name, email, password) 
+                         VALUES (?,?,?,?)''',
+                         (asignup_e1.get(),asignup_e2.get(),asignup_e3.get(),asignup_e4.get())
+                     )
+            #saving the changes made in the database
+            conn.commit()
+            conn.close()
+
+            tk.messagebox.showinfo("Success/Security_info","Signup validated! Now you need to fill the security questions so that you can reset your password in case if you forgot it by filling the questions . ")
+            main_frame5.place_forget()
+            asec_qsn()
+
+         #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#        
 
     def back():
         '''function to open dashboard when back button is clicked '''
@@ -1071,6 +1124,27 @@ def admin_signup():
         '''
         this function is made to show a message when user clicks submit on win1 window
         '''
+        #checking if the entry is filled or not
+        if asec_entry1.get() == '' or asec_entry2.get() == '' or asec_entry3.get() == '':
+            tk.messagebox.showerror("Error", "Please fill all the required fields!")
+
+        elif asec_entry1.get().isdigit() == False:
+            tk.messagebox.showerror("Error", "Please enter a number in the first field!")
+
+        else:
+
+           #inserting security answers to the database (admin)
+            conn = sqlite3.connect("mealmate.db")
+            c = conn.cursor()
+            
+            #updating security questions
+            c.execute('''UPDATE admin SET sec_ans1 = ?, sec_ans2 = ?, sec_ans3 = ?
+             WHERE first_name = ? and email = ?''',
+             (asec_entry1.get(), asec_entry2.get(), asec_entry3.get(), asignup_e1.get(), asignup_e3.get()))
+            
+            #for saving the changes made in the database
+            conn.commit()
+            conn.close()
 
         asign_sec_qsn_frame.place_forget()
         admin_login()
@@ -1085,7 +1159,7 @@ def admin_signup():
         '''This function opens the security questions page when called.'''
         main_frame5.place_forget()
         main_frame1.place_forget()
-        global asign_sec_qsn_frame
+        global asign_sec_qsn_frame, asec_entry1,asec_entry2,asec_entry3
         
         asign_sec_qsn_frame=tk.Frame(root)
         asign_sec_qsn_frame.place(relheight=1,relwidth=1,x=0,y=0)
@@ -1147,7 +1221,7 @@ def admin_signup():
 
 
     global tksignup_eye,tkasignup_i,photo_asignup_logo,asignup_backtk,photosignup_image1,areset_pass_frame
-
+    global asignup_e1, asignup_e2, asignup_e3, asignup_e4, asignup_e5
     #the bg frame
     asignup_frame=tk.Frame(main_frame5,bg="Black")
     asignup_frame.place(relwidth=1,relheight=1)
