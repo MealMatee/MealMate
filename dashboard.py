@@ -148,10 +148,42 @@ def user_login():
         this function is made so that a messagebox is shown after clicking 
         the login button and the root window is destroyed . 
         """
-        tk.messagebox.showinfo("Successful Message ","Login Successful !")
-        main_ulogin_frame2.place_forget()
-        user_dashboard()
+
+        #checking if the entry box are filled
+        if ulogin_e1.get() == "" or ulogin_e2.get() == "":
+            tk.messagebox.showerror("Error","All fields are required.")
+        
+        else:
+            try:
+                conn = sqlite3.connect("mealmate.db")
+                c = conn.cursor()
+
+
+                # Fetch the record with the matching email and password
+                c.execute("SELECT * FROM user WHERE email = ? and password = ?", (ulogin_e1.get(), ulogin_e2.get()))
+                result = c.fetchone()
+
+                # Check if a result was found
+                if result is not None:
+                    # Assuming the email is in the 3rd column and the password in the 4th column
+                    if ulogin_e1.get() == result[2] and ulogin_e2.get() == result[3]:
+                        tk.messagebox.showinfo("Successful Message", "Login Successful!")
+                        main_ulogin_frame2.place_forget()
+                        user_dashboard()
+                    else:
+                        tk.messagebox.showerror("Error", "Invalid email or password.")
+                else:
+                    tk.messagebox.showerror("Error", "Invalid email or password.")
+
+            except Exception as e:
+                tk.messagebox.showerror("Error", f"An error occurred: {str(e)}")
+            finally:
+                conn.close()
+    
+
+            
           
+        #----------------------------------------------------------------------------------------------#
 
 
 
@@ -439,10 +471,41 @@ def admin_login():
         this function is made so that a messagebox is shown after clicking 
         the login button and the root window is destroyed . 
         """
-        tk.messagebox.showinfo("Successful Message ","Login Successful !")
-        main_frame4.place_forget()
-        admin_dashboard()   
-        pass      
+        #checking if the entry box are filled
+        if alogin_e1.get() == "" or alogin_e2.get() == "":
+            tk.messagebox.showerror("Error","All fields are required.")
+        
+        else:
+            try:
+                conn = sqlite3.connect("mealmate.db")
+                c = conn.cursor()
+
+
+                # Fetch the record with the matching email and password
+                c.execute("SELECT * FROM admin WHERE email = ? and password = ?", (alogin_e1.get(), alogin_e2.get()))
+                result = c.fetchone()
+
+                # Check if a result was found
+                if result is not None:
+                    # Assuming the email is in the 3rd column and the password in the 4th column
+                    if alogin_e1.get() == result[2] and alogin_e2.get() == result[3]:
+                        tk.messagebox.showinfo("Successful Message", "Login Successful!")
+                        main_frame4.place_forget()
+                        admin_dashboard()
+                    else:
+                        tk.messagebox.showerror("Error", "Invalid email or password.")
+                else:
+                    tk.messagebox.showerror("Error", "Invalid email or password.")
+
+            except Exception as e:
+                tk.messagebox.showerror("Error", f"An error occurred: {str(e)}")
+            finally:
+                conn.close()
+
+
+
+
+                
         
 
     #---------------------------security question page---------------------------------------------#
