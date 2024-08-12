@@ -774,6 +774,10 @@ def user_signup():
                   sec_ans2,
                   sec_ans3
                    )''')
+    
+        #fetching all email data from database of user 
+        c.execute("SELECT email FROM user")
+        emails = c.fetchall()
         #saving the changes made in the database
         conn.commit()
         conn.close()
@@ -801,6 +805,11 @@ def user_signup():
         elif len(usignup_e4.get()) < 8 :
             #show error
             tk.messagebox.showerror("Error", "Password should be at least 8 characters long!")
+        
+        elif emails is not None:
+            #show error
+            tk.messagebox.showerror("Error", "User account already registered!")
+
         
 
         else:
@@ -1107,6 +1116,9 @@ def admin_signup():
                   sec_ans2,
                   sec_ans3
                    )''')
+        #fetching all email data from database of user 
+        c.execute("SELECT email FROM admin")
+        emails = c.fetchall()
             #saving the changes made in the database
         conn.commit()
         conn.close()
@@ -1135,6 +1147,11 @@ def admin_signup():
         elif len(asignup_e4.get()) < 8 :
             #show error
             tk.messagebox.showerror("Error", "Password should be at least 8 characters long!")
+            
+
+        elif emails is not None:
+            #show error
+            tk.messagebox.showerror("Error", "User account already registered!")
         
 
         else:
