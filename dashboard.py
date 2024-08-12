@@ -774,6 +774,9 @@ def user_signup():
                   sec_ans2,
                   sec_ans3
                    )''')
+        #saving the changes made in the database
+        conn.commit()
+        conn.close()
         
         #checking if the entry boxes are filled and entered the valid credentials
 
@@ -801,18 +804,6 @@ def user_signup():
         
 
         else:
-            #inserting data into the database
-            c.execute('''INSERT INTO user (first_name, last_name, email, password) 
-                         VALUES (?,?,?,?)''',
-                         (usignup_e1.get(),usignup_e2.get(),usignup_e3.get(),usignup_e4.get())
-                     )
-            
-
-            #saving the changes made in the database
-            conn.commit()
-            conn.close()
-
-
             tk.messagebox.showinfo("Success/Security_info","Signup validated! Now you need to fill the security questions so that you can reset your password in case if you forgot it by filling the questions . ")
             main_frame3.place_forget()
             sec_qsn()
@@ -880,9 +871,11 @@ def user_signup():
             c = conn.cursor()
             
             #updating security questions
-            c.execute('''UPDATE user SET sec_ans1 = ?, sec_ans2 = ?, sec_ans3 = ?
-             WHERE first_name = ? and email = ?''',
-             (usec_entry1.get(), usec_entry2.get(), usec_entry3.get(), usignup_e1.get(), usignup_e3.get()))
+            #inserting data into the database
+            c.execute('''INSERT INTO user (first_name, last_name, email, password, sec_ans1, sec_ans2, sec_ans3) 
+                         VALUES (?,?,?,?,?,?,?)''',
+                         ((usignup_e1.get()).capitalize(),(usignup_e2.get()).capitalize(),usignup_e3.get(),usignup_e4.get(),usec_entry1.get(), usec_entry2.get(), usec_entry3.get())
+                     )
             conn.commit()
             conn.close()
             usign_sec_qsn_frame.place_forget()  
@@ -1114,6 +1107,10 @@ def admin_signup():
                   sec_ans2,
                   sec_ans3
                    )''')
+            #saving the changes made in the database
+        conn.commit()
+        conn.close()
+        
 
         #checking if the entry boxes are filled and entered the valid credentials
 
@@ -1141,15 +1138,6 @@ def admin_signup():
         
 
         else:
-            #inserting data into the database (admin)
-            c.execute('''INSERT INTO admin (first_name, last_name, email, password) 
-                         VALUES (?,?,?,?)''',
-                         (asignup_e1.get(),asignup_e2.get(),asignup_e3.get(),asignup_e4.get())
-                     )
-            #saving the changes made in the database
-            conn.commit()
-            conn.close()
-
             tk.messagebox.showinfo("Success/Security_info","Signup validated! Now you need to fill the security questions so that you can reset your password in case if you forgot it by filling the questions . ")
             main_frame5.place_forget()
             asec_qsn()
@@ -1208,10 +1196,11 @@ def admin_signup():
             conn = sqlite3.connect("mealmate.db")
             c = conn.cursor()
             
-            #updating security questions
-            c.execute('''UPDATE admin SET sec_ans1 = ?, sec_ans2 = ?, sec_ans3 = ?
-             WHERE first_name = ? and email = ?''',
-             (asec_entry1.get(), asec_entry2.get(), asec_entry3.get(), asignup_e1.get(), asignup_e3.get()))
+            #inserting data into the database (admin)
+            c.execute('''INSERT INTO admin (first_name, last_name, email, password, sec_ans1, sec_ans2, sec_ans3) 
+                         VALUES (?,?,?,?)''',
+                         ((asignup_e1.get()).capitalize(),asignup_e2.get().capitalize(),asignup_e3.get(),asignup_e4.get(),asec_entry1.get(), asec_entry2.get(), asec_entry3.get())
+                     )
             
             #for saving the changes made in the database
             conn.commit()
