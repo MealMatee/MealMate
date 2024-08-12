@@ -2029,6 +2029,11 @@ def user_dashboard():
         customize_win.destroy()
         tk.messagebox.showinfo("success message","user profile customization successful")
 
+    def exit_but():
+        exit_reply=tk.messagebox.askyesno("Exit?","Are you sure you want to exit .?")
+        if exit_reply==1:
+            root.destroy()
+
 
 
 
@@ -2181,18 +2186,21 @@ def user_dashboard():
     u_db_framee=CTkFrame(u_db_frame,fg_color="#D9D9D9",corner_radius=10)
     u_db_framee.place(relwidth=1,relheight=0.14, rely = 0.83)
 
+    #exit button
+    u_db_btn4=CTkButton(u_db_frame1,text="EXIT",fg_color="Black",text_color="white",hover=0,font=("Inter",12,"bold"),command=exit_but)
+    u_db_btn4.place(relwidth=0.05,relheight=0.45,relx=0.92,rely=0.3)
 
 
     #customize profile button
     u_db_btn2=CTkButton(u_db_frame1,text="CUSTOMIZE PROFILE",fg_color="Black",text_color="white",hover=0,font=("Inter",12,"bold"),command=customize)
-    u_db_btn2.place(relwidth=0.1,relheight=0.45,relx=0.82,rely=0.3)
+    u_db_btn2.place(relwidth=0.1,relheight=0.45,relx=0.74,rely=0.3)
 
     #logout button
     u_db_btn3=CTkButton(u_db_frame1,text="LOGOUT",fg_color="Black",text_color="white",hover=0,font=("Inter",12,"bold"),command=logout_but)
-    u_db_btn3.place(relwidth=0.06,relheight=0.45,relx=0.93,rely=0.3)
+    u_db_btn3.place(relwidth=0.06,relheight=0.45,relx=0.85,rely=0.3)
 
 
-    #------------------------------------items' main menu-----------------------------------------#
+    #------------------------------------item's main menu-----------------------------------------#
 
 
     def main_menu():
