@@ -2030,7 +2030,7 @@ def user_dashboard():
         tk.messagebox.showinfo("success message","user profile customization successful")
 
     def exit_but():
-        exit_reply=tk.messagebox.askyesno("Exit?","Are you sure you want to exit .?")
+        exit_reply=tk.messagebox.askyesno("Exit?","Are you sure you want to exit ?")
         if exit_reply==1:
             root.destroy()
 
