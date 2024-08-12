@@ -779,6 +779,10 @@ def user_signup():
 
         if usignup_e1.get() == '' or usignup_e2.get() == '' or usignup_e3.get() == '' or usignup_e4.get() == '' or usignup_e5.get() == '' or usignup_e1.get() == 'firstname' or usignup_e2.get() == 'lastname' or usignup_e3.get() == 'example@gmail.com':
             tk.messagebox.showerror("Error", "Please fill all the required fields!")
+        
+        elif (usignup_e1.get()).isalpha() == False or (usignup_e2.get()).isalpha() == False:
+            #show error
+            tk.messagebox.showerror("Error", "Please enter valid first and last names!")
 
 
         elif '@gmail.com' not in usignup_e3.get() or len(usignup_e3.get()) <= 10 or ' ' in usignup_e3.get():
@@ -1116,6 +1120,10 @@ def admin_signup():
         if asignup_e1.get() == '' or asignup_e2.get() == '' or asignup_e3.get() == '' or asignup_e4.get() == '' or asignup_e5.get() == '' or asignup_e1.get() == 'firstname' or asignup_e2.get() == 'lastname' or asignup_e3.get() == 'example@admin.gmail.com':
             tk.messagebox.showerror("Error", "Please fill all the required fields!")
 
+
+        elif (asignup_e1.get()).isalpha() == False or (asignup_e2.get()).isalpha() == False:
+            #show error
+            tk.messagebox.showerror("Error", "Please enter valid first and last names!")
 
         elif '@admin.gmail.com' not in asignup_e3.get() or len(asignup_e3.get()) <= 16 or ' ' in asignup_e3.get():
             #show error
