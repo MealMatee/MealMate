@@ -781,6 +781,10 @@ def user_signup():
         #fetching all email data from database of user 
         c.execute("SELECT email FROM user")
         emails = c.fetchall()
+        a = []
+
+        for email in emails:
+            a.append(email[0])
         #saving the changes made in the database
         conn.commit()
         conn.close()
@@ -804,21 +808,23 @@ def user_signup():
             #show error
             tk.messagebox.showerror("Error", "Passwords do not match!")
 
+        #check if email already exists in the user database table or not 
+
+
+
 
         elif len(usignup_e4.get()) < 8 :
             #show error
-            tk.messagebox.showerror("Error", "Password should be at least 8 characters long!")
-        
-        elif emails is not None:
-            #show error
-            tk.messagebox.showerror("Error", "User account already registered!")
-
-        
+            tk.messagebox.showerror("Error", "Password should be at least 8 characters long!")  
 
         else:
-            tk.messagebox.showinfo("Success/Security_info","Signup validated! Now you need to fill the security questions so that you can reset your password in case if you forgot it by filling the questions . ")
-            main_frame3.place_forget()
-            sec_qsn()
+            if usignup_e3.get() in a:
+                #show error
+                tk.messagebox.showerror("Error", "Email already exists!")
+            else:
+               tk.messagebox.showinfo("Success/Security_info","Signup validated! Now you need to fill the security questions so that you can reset your password in case if you forgot it by filling the questions . ")
+               main_frame3.place_forget()
+               sec_qsn()
 
 
 
@@ -1119,10 +1125,14 @@ def admin_signup():
                   sec_ans2,
                   sec_ans3
                    )''')
-        global emails
+        global a_emails
         #fetching all email data from database of user 
         c.execute("SELECT email FROM admin")
-        emails = c.fetchall()
+        a_emails = c.fetchall()
+        a_a = []
+
+        for email in a_emails:
+            a_a.append(email[0])
             #saving the changes made in the database
         conn.commit()
         conn.close()
@@ -1153,12 +1163,13 @@ def admin_signup():
             tk.messagebox.showerror("Error", "Password should be at least 8 characters long!")
             
 
-        elif emails is not None:
-            #show error
-            tk.messagebox.showerror("Error", "User account already registered!")
         
 
         else:
+         if asignup_e3.get() in a_a:
+            #show error
+            tk.messagebox.showerror("Error", "User account already registered!")
+         else:
             tk.messagebox.showinfo("Success/Security_info","Signup validated! Now you need to fill the security questions so that you can reset your password in case if you forgot it by filling the questions . ")
             main_frame5.place_forget()
             asec_qsn()
