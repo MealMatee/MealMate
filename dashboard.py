@@ -2163,20 +2163,17 @@ def user_dashboard():
             else:
                 customize_entry5.configure(show="")
 
-        customize_win=tk.Toplevel()
-        customize_win.title("Profile customization Menu")
-        customize_win.iconbitmap("pictures//32432hotbeverage_98916.ico")
-        customize_win.resizable(0,0)
-        customize_win.geometry("1387x970+0+0")
+        customize_main_frame=tk.Frame(root,bg="white")
+        customize_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
 
 
         global customize_entry1, customize_entry2, customize_entry3, customize_entry4, customize_entry5, customize_entry0
     #frame
-        customize_frame1=tk.Frame(customize_win,width=712,height=970,bg="white")
+        customize_frame1=tk.Frame(customize_main_frame,width=712,height=970,bg="white")
         customize_frame1.place(x=0,y=0)
     #frame
         customize_frame3=CTkFrame(customize_frame1,corner_radius=18,fg_color="#D9D9D9")
-        customize_frame3.place(relx=0.05,rely=0.05,relwidth=0.9,relheight=0.9)
+        customize_frame3.place(relx=0.1,rely=0.05,relwidth=0.9,relheight=0.9)
 
     #user profile label
         customize_lbl2=tk.Label(customize_frame3,text="USER PROFILE",font=("Inter",26,"bold"),fg="#5B6E80",bg="#D9D9D9")
@@ -2198,10 +2195,11 @@ def user_dashboard():
     #Email label
         customize_lbl5=tk.Label(customize_frame3,text="Email:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
         customize_lbl5.place(relx=0.07,rely=0.36)
-    #Email entrybox
-        customize_entry0=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17), placeholder_text=user_data[0][2],placeholder_text_color="#97D5C9")
-        customize_entry0.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.41)
-        customize_entry0.configure(state=DISABLED)
+    #Email frame
+        customize_email_frame=CTkFrame(customize_frame3,corner_radius=12,border_width=2,border_color="#5B6E80",fg_color="white")
+        customize_email_frame.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.41)
+        customize_email_label=tk.Label(customize_email_frame,fg="#97D5C9",bg="white",font=("Inter",17),text=user_data[0][2])
+        customize_email_label.place(relx=0.03,rely=0.25)
 
     #eyebutton
         customize_eye_img1=Image.open("pictures/ion_eyegrey_eye.png")
@@ -2210,10 +2208,11 @@ def user_dashboard():
         #password entry
         customize_lbl6=tk.Label(customize_frame3,text="Password:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
         customize_lbl6.place(relx=0.07,rely=0.49)
-        #password entrybox
-        customize_entry3=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text=user_data[0][3],placeholder_text_color="#97D5C9",show="*")
-        customize_entry3.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.54)
-        customize_entry3.configure(state=DISABLED)
+        #password frame
+        customize_pass_frame=CTkFrame(customize_frame3,corner_radius=12,border_width=2,border_color="#5B6E80",fg_color="white")
+        customize_pass_frame.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.54)
+        customize_pass_label=tk.Label(customize_pass_frame,fg="#97D5C9",bg="white",font=("Inter",17),text=user_data[0][3])
+        customize_pass_label.place(relx=0.03,rely=0.25)
 
     # new password label
         customize_lbl7=tk.Label(customize_frame3,text="NewPassword:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
@@ -2242,8 +2241,8 @@ def user_dashboard():
         customize_button.place(relx=0.35,rely=0.91,relheight=0.06)
 
     #frame
-        customize_frame2=tk.Frame(customize_win,width=675,height=970,bg="white")
-        customize_frame2.place(x=712,y=0)
+        customize_frame2=tk.Frame(customize_main_frame,width=700,height=1080,bg="white")
+        customize_frame2.place(x=1000,y=0)
 
     #backgriund pic in admin dashboard
         customize_img=Image.open("pictures/Rectangle 79pic.png")
