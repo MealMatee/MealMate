@@ -2115,7 +2115,7 @@ def user_dashboard():
 
 
 
-    #-----------------------------------user customization profile------------------------------------------#
+    #-------------------------------------------user customization profile---------------------------------------------------#
 
 
 
@@ -2164,22 +2164,22 @@ def user_dashboard():
         customize_lbl3=tk.Label(customize_frame3,text="FirstName:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
         customize_lbl3.place(relx=0.07,rely=0.1)
     #firstname entrybox
-        customize_entry1=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text="Firstname",placeholder_text_color="#97D5C9")
+        customize_entry1=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text='user_data[0]',placeholder_text_color="#97D5C9")
         customize_entry1.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.15)
 
     #lastname label
         customize_lbl4=tk.Label(customize_frame3,text="LastName:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
         customize_lbl4.place(relx=0.07,rely=0.23)
     #lastname entrybox
-        customize_entry2=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text="Lastname",placeholder_text_color="#97D5C9")
+        customize_entry2=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text='user_data[1]',placeholder_text_color="#97D5C9")
         customize_entry2.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.28)
-
     #Email label
         customize_lbl5=tk.Label(customize_frame3,text="Email:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
         customize_lbl5.place(relx=0.07,rely=0.36)
     #Email entrybox
-        customize_entry2=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text="example@gmail.com",placeholder_text_color="#97D5C9")
-        customize_entry2.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.41)
+        customize_entry0=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17), placeholder_text='user_data[2]',placeholder_text_color="#97D5C9")
+        customize_entry0.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.41)
+        customize_entry0.configure(state=DISABLED)
 
     #eyebutton
         customize_eye_img1=Image.open("pictures/ion_eyegrey_eye.png")
@@ -2189,7 +2189,7 @@ def user_dashboard():
         customize_lbl6=tk.Label(customize_frame3,text="Password:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
         customize_lbl6.place(relx=0.07,rely=0.49)
         #password entrybox
-        customize_entry3=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text="Password",placeholder_text_color="#97D5C9",show="*")
+        customize_entry3=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text='user_data[3]',placeholder_text_color="#97D5C9",show="*")
         customize_entry3.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.54)
         customize_entry3.configure(state=DISABLED)
 
@@ -2584,6 +2584,22 @@ def user_dashboard():
 
 def main():
     """This function opens the main page when called."""
+
+
+
+
+#----------------------------------------------------------------items data table-----------------------------------------------------#
+    conn = sqlite3.connect('mealmate.db')
+    #fetch items data from mealmate.db
+    c = conn.cursor()
+    c.execute("SELECT * FROM item")
+    items_lst = c.fetchall()
+    conn.close()
+    
+    
+    
+#-------------------------------------------------------------------------------------------------------------------------------------#
+
 
     def exit():
         """this function is made to ask a yes-no question to the user when exit button is clicked and if the user clicks yes then the root is destroyed. """
