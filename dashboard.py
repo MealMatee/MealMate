@@ -487,11 +487,13 @@ def admin_login():
                 # Fetch the record with the matching email and password
                 c.execute("SELECT * FROM admin WHERE email = ? and password = ?", (alogin_e1.get(), alogin_e2.get()))
                 result = c.fetchone()
-
+                global a_email, a_password
                 # Check if a result was found
                 if result is not None:
                     # Assuming the email is in the 3rd column and the password in the 4th column
                     if alogin_e1.get() == result[2] and alogin_e2.get() == result[3]:
+                        a_email = alogin_e1.get()
+                        a_password = alogin_e2.get()
                         tk.messagebox.showinfo("Successful Message", "Login Successful!")
                         main_frame4.place_forget()
                         admin_dashboard()
