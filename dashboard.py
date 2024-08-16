@@ -166,7 +166,10 @@ def user_login():
                 # Check if a result was found
                 if result is not None:
                     # Assuming the email is in the 3rd column and the password in the 4th column
+                    global u_email, u_password
                     if ulogin_e1.get() == result[2] and ulogin_e2.get() == result[3]:
+                        u_email = ulogin_e1.get()
+                        u_password = ulogin_e2.get()
                         tk.messagebox.showinfo("Successful Message", "Login Successful!")
                         main_ulogin_frame2.place_forget()
                         user_dashboard()
@@ -1116,6 +1119,7 @@ def admin_signup():
                   sec_ans2,
                   sec_ans3
                    )''')
+        global emails
         #fetching all email data from database of user 
         c.execute("SELECT email FROM admin")
         emails = c.fetchall()
@@ -2103,8 +2107,16 @@ def user_dashboard():
 
     def custom_confirm():
         """this function is created to destroy customize_win and show a message user profile customization successful."""
-        customize_win.destroy()
+
+
+    #-----------------------------------------------------database--------------------------------------------------#
+
+        #update password
         tk.messagebox.showinfo("success message","user profile customization successful")
+        customize_win.destroy()
+            
+        #--------------------------------------------------------------------------------------------------------#
+
 
     def exit_but():
         exit_reply=tk.messagebox.askyesno("Exit?","Are you sure you want to exit ?")
@@ -2124,7 +2136,15 @@ def user_dashboard():
     def customize():
         """this function is made to create a top label window when customize profile button is cliclked """
 
-        global customize_win
+        global customize_win, user_data
+
+        #-------------------------------------------database----------------------------------------#
+        #fetching logged in user data from the mealmate database
+        conn = sqlite3.connect('mealmate.db')
+        c = conn.cursor()
+        c.execute("SELECT * FROM user WHERE email =? and password = ?", (u_email,u_password))
+        user_data = c.fetchall()
+        #-------------------------------------------------------------------------------------------#
         def u_db_onclick2():
             '''
             it is made so that we can hide or show password clicking the eye button
@@ -2149,6 +2169,8 @@ def user_dashboard():
         customize_win.resizable(0,0)
         customize_win.geometry("1387x970+0+0")
 
+
+        global customize_entry1, customize_entry2, customize_entry3, customize_entry4, customize_entry5, customize_entry0
     #frame
         customize_frame1=tk.Frame(customize_win,width=712,height=970,bg="white")
         customize_frame1.place(x=0,y=0)
@@ -2164,20 +2186,20 @@ def user_dashboard():
         customize_lbl3=tk.Label(customize_frame3,text="FirstName:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
         customize_lbl3.place(relx=0.07,rely=0.1)
     #firstname entrybox
-        customize_entry1=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text='user_data[0]',placeholder_text_color="#97D5C9")
+        customize_entry1=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text=user_data[0][0],placeholder_text_color="#97D5C9")
         customize_entry1.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.15)
 
     #lastname label
         customize_lbl4=tk.Label(customize_frame3,text="LastName:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
         customize_lbl4.place(relx=0.07,rely=0.23)
     #lastname entrybox
-        customize_entry2=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text='user_data[1]',placeholder_text_color="#97D5C9")
+        customize_entry2=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text=user_data[0][1],placeholder_text_color="#97D5C9")
         customize_entry2.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.28)
     #Email label
         customize_lbl5=tk.Label(customize_frame3,text="Email:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
         customize_lbl5.place(relx=0.07,rely=0.36)
     #Email entrybox
-        customize_entry0=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17), placeholder_text='user_data[2]',placeholder_text_color="#97D5C9")
+        customize_entry0=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17), placeholder_text=user_data[0][2],placeholder_text_color="#97D5C9")
         customize_entry0.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.41)
         customize_entry0.configure(state=DISABLED)
 
@@ -2189,7 +2211,7 @@ def user_dashboard():
         customize_lbl6=tk.Label(customize_frame3,text="Password:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
         customize_lbl6.place(relx=0.07,rely=0.49)
         #password entrybox
-        customize_entry3=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text='user_data[3]',placeholder_text_color="#97D5C9",show="*")
+        customize_entry3=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text=user_data[0][3],placeholder_text_color="#97D5C9",show="*")
         customize_entry3.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.54)
         customize_entry3.configure(state=DISABLED)
 
