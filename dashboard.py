@@ -2642,6 +2642,36 @@ def main():
         if response==1:
             root.destroy()
 
+    def about_page():
+        global photo_about_page_logo
+        c=tk.Toplevel()
+        c.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        c.title("About Mealmate")
+        c.geometry("1000x700")
+        c.resizable(0,0)
+
+        main_about_page_frame=tk.Frame(c,bg="white")
+        main_about_page_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        about_page_frame1=tk.Frame(main_about_page_frame,bg="white")
+        about_page_frame1.place(relheight=0.15,relwidth=1,relx=0,rely=0)
+
+        about_page_logo=Image.open("pictures/Rectangle 41.png")
+        about_page_logo=about_page_logo.resize((468,97))
+        photo_about_page_logo=ImageTk.PhotoImage(about_page_logo)
+        #label that contains image
+        about_page_lbl = tk.Label(main_about_page_frame, image=photo_about_page_logo,bg="white")
+        about_page_lbl.place(x=280, y=8, w=468, h=97)
+
+        about_page_frame2=CTkFrame(main_about_page_frame,fg_color="#F7D8D8",corner_radius=15)
+        about_page_frame2.place(relwidth=1,relheight=0.9,relx=0,rely=0.16)
+
+        about_page_label1=tk.Label(about_page_frame2,text="Your Everyday Mealtime\n   Companion",font=("Inter",25,"italic"),bg="#F7D8D8",fg="#A1201C")
+        about_page_label1.place(relx=0.3,rely=0.1)
+
+        about_page_label2=tk.Label(about_page_frame2,text="Welcome to Mealmate Cafe, where delicious meals, cozy\nvibes, and friendly faces are always on the menu. At\nMealmate, we believe that food is more than just\nsustenance it's about connection, comfort, and creating\nmemories.",font=("Inter",25,"italic"),bg="#F7D8D8",fg="black")
+        about_page_label2.place(relx=0.11,rely=0.3)
+
 
 
     global main_frame1
@@ -2674,7 +2704,7 @@ def main():
     image2=image2.resize((508,105))
     photoimage2=ImageTk.PhotoImage(image2)
 #button for logo
-    Button1 = tk.Button(f, image=photoimage2,bg="White",activebackground="White",bd=0)
+    Button1 = tk.Button(f, image=photoimage2,bg="White",activebackground="White",bd=0,command=about_page)
     Button1.place(relx=0.05,rely=0.025)
 
 
