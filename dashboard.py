@@ -68,7 +68,7 @@ def user_login():
 
 
     def reset_successful():
-        '''function to destroy top label window and show a message''' 
+        '''function to check if the conditions are meet and then resets the password''' 
         #----------------------------------------------database------------------------------------------#
         if ulogin_etr0.get() == '' or ulogin_etr1.get() == '' or ulogin_etr2.get() == '' : 
             tk.messagebox.showerror("Error","All fields must be filled out.")
@@ -504,16 +504,34 @@ def admin_login():
 
     def security_update():
         '''
-        this function is made to show a message when user clicks submit on win1 window
+        this function is made to reset the old password
         '''
+        #----------------------------------------------database------------------------------------------#
+        if alogin_etr0.get() == '' or alogin_etr1.get() == '' or alogin_etr2.get() == '' : 
+            tk.messagebox.showerror("Error","All fields must be filled out.")
+        elif alogin_e1.get() != alogin_etr0.get():
+            tk.messagebox.showerror("Error","Incorrect email.")
+        elif alogin_etr2.get()!= alogin_etr1.get():
+            tk.messagebox.showerror("Error","Incorrect password.")
+        elif len(alogin_etr1.get()) < 8 :
+            tk.messagebox.showerror("Error","Password must be at least 8 characters long.")
+        else:
+            #update password to user database table
+            conn=sqlite3.connect('mealmate.db')
+            c=conn.cursor()
+            c.execute("UPDATE admin SET password=? WHERE email=?",(alogin_etr2.get(),alogin_etr0.get()))
+            conn.commit()
+            conn.close()
+            areset_pass_main_frame.place_forget()
+            asign_sec_qsn_frame.place_forget()
+            areset_pass_frame.place_forget()
+            admin_login()        
+            tk.messagebox.showinfo("Reset Successful","Password reset successful.")
+        #------------------------------------------------------------------------------------------------#
 
 
 
-        areset_pass_main_frame.place_forget()
-        asign_sec_qsn_frame.place_forget()
-        areset_pass_frame.place_forget()
-        admin_login()        
-        tk.messagebox.showinfo("Successful Message ","Security questions Entry Successful !")
+        
         
 
     def login():
@@ -566,7 +584,7 @@ def admin_login():
         """This function opens the security questions page when called."""
         main_frame4.place_forget()
         main_frame1.place_forget()
-        global asign_sec_qsn_frame
+        global asign_sec_qsn_frame,asec_entry1,asec_entry2,asec_entry3
         
         asign_sec_qsn_frame=tk.Frame(root)
         asign_sec_qsn_frame.place(relheight=1,relwidth=1,x=0,y=0)
@@ -649,54 +667,70 @@ def admin_login():
 
     def reset_pass():
         """this function opens the reset password page when called"""
-        global ulogin_etr2,areset_pass_frame,alogin_etr1,alogin_etr2,areset_pass_main_frame
-        asign_sec_qsn_frame.place_forget()
+        #fetch admin data from admin table
+        conn = sqlite3.connect("mealmate.db")
+        c = conn.cursor()
+        c.execute("SELECT * FROM admin WHERE email = ?", (alogin_e1.get(),))
+        admin_data = c.fetchone()
 
-        areset_pass_main_frame=tk.Frame(root)
-        areset_pass_main_frame.place(relheight=1,relwidth=1,x=0,y=0)
 
-        reset_pass_image=Image.open("pictures/reset passreset_pass2.png")
-        reset_pass_image_resize=reset_pass_image.resize((1920,1080))
-        reset_pass_image_tk=ImageTk.PhotoImage(reset_pass_image_resize)
-        reset_pass_label1=tk.Label(areset_pass_main_frame,image=reset_pass_image_tk)
-        reset_pass_label1.image = reset_pass_image_tk  #reference to the picture
-        reset_pass_label1.place(relheight=1,relwidth=1)
-        
-        areset_pass_frame=tk.Frame(areset_pass_main_frame,width=450,height=450,bd=3,relief="groove",bg="#0B1A41")
-        areset_pass_frame.place(relx=0.38,rely=0.36)
-        
-        global ulogin_etr1, ulogin_etr2,ulogin_etr0
-        #label email 
-        alogin_lbl0=tk.Label(areset_pass_frame,text="Enter your email:",font=("Regular",13),fg="white",bg="#0B1A41")
-        alogin_lbl0.place(relx=0.05,rely=0.08)
-        #enter new pass entry box
-        alogin_etr0=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",text_color="Black")
-        alogin_etr0.place(relx=0.055,rely=0.17,relwidth=0.9,relheight=0.11)
 
-        #label
-        alogin_lbl1=tk.Label(areset_pass_frame,text="Enter New Password:",font=("Regular",13),fg="white",bg="#0B1A41")
-        alogin_lbl1.place(relx=0.05,rely=0.33)
-        #enter new pass entry box
-        alogin_etr1=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
-        alogin_etr1.place(relx=0.055,rely=0.41,relwidth=0.9,relheight=0.11)
 
-        #confirm pass label
-        alogin_lbl2=tk.Label(areset_pass_frame,text="Confirm new Password:",font=("Regular",13),fg="white",bg="#0B1A41")
-        alogin_lbl2.place(relx=0.05,rely=0.54)
-        #entrybox for confirm password
-        alogin_etr2=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
-        alogin_etr2.place(relx=0.055,rely=0.62,relwidth=0.9,relheight=0.11)
 
-        #the submit button
-        alogin_btn1=CTkButton(areset_pass_frame,text="SUBMIT",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",border_width=2,command=security_update)
-        alogin_btn1.place(relx=0.35,rely=0.78,relwidth=0.3,relheight=0.11)
+        #-----------------------------------------------database---------------------------------------------#
+        if asec_entry1.get() == '' or asec_entry2.get() == '' or asec_entry3.get() == '':
+            tk.messagebox.showerror("Error","All fields are required.")
+        elif (asec_entry1.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Entered value must be a number.")
+        if asec_entry1.get() == admin_data[4] and asec_entry2.get() == admin_data[5] and asec_entry3.get() == admin_data[6]:
+            global ulogin_etr2,areset_pass_frame,alogin_etr1,alogin_etr2,areset_pass_main_frame
+            asign_sec_qsn_frame.place_forget()
 
-        #eye button in entry box
-        alogin_btn2=tk.Button(alogin_etr1,image=alogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p1)
-        alogin_btn2.place(relx=0.9,rely=0.3)
-        #eye button in entry box
-        alogin_btn3=tk.Button(alogin_etr2,image=alogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p2)
-        alogin_btn3.place(relx=0.9,rely=0.3)
+            areset_pass_main_frame=tk.Frame(root)
+            areset_pass_main_frame.place(relheight=1,relwidth=1,x=0,y=0)
+
+            reset_pass_image=Image.open("pictures/reset passreset_pass2.png")
+            reset_pass_image_resize=reset_pass_image.resize((1920,1080))
+            reset_pass_image_tk=ImageTk.PhotoImage(reset_pass_image_resize)
+            reset_pass_label1=tk.Label(areset_pass_main_frame,image=reset_pass_image_tk)
+            reset_pass_label1.image = reset_pass_image_tk  #reference to the picture
+            reset_pass_label1.place(relheight=1,relwidth=1)
+            
+            areset_pass_frame=tk.Frame(areset_pass_main_frame,width=450,height=450,bd=3,relief="groove",bg="#0B1A41")
+            areset_pass_frame.place(relx=0.38,rely=0.36)
+            
+            global alogin_etr1, alogin_etr2,alogin_etr0
+            #label email 
+            alogin_lbl0=tk.Label(areset_pass_frame,text="Enter your email:",font=("Regular",13),fg="white",bg="#0B1A41")
+            alogin_lbl0.place(relx=0.05,rely=0.08)
+            #enter new pass entry box
+            alogin_etr0=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",text_color="Black")
+            alogin_etr0.place(relx=0.055,rely=0.17,relwidth=0.9,relheight=0.11)
+
+            #label
+            alogin_lbl1=tk.Label(areset_pass_frame,text="Enter New Password:",font=("Regular",13),fg="white",bg="#0B1A41")
+            alogin_lbl1.place(relx=0.05,rely=0.33)
+            #enter new pass entry box
+            alogin_etr1=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
+            alogin_etr1.place(relx=0.055,rely=0.41,relwidth=0.9,relheight=0.11)
+
+            #confirm pass label
+            alogin_lbl2=tk.Label(areset_pass_frame,text="Confirm new Password:",font=("Regular",13),fg="white",bg="#0B1A41")
+            alogin_lbl2.place(relx=0.05,rely=0.54)
+            #entrybox for confirm password
+            alogin_etr2=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
+            alogin_etr2.place(relx=0.055,rely=0.62,relwidth=0.9,relheight=0.11)
+
+            #the submit button
+            alogin_btn1=CTkButton(areset_pass_frame,text="SUBMIT",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",border_width=2,command=security_update)
+            alogin_btn1.place(relx=0.35,rely=0.78,relwidth=0.3,relheight=0.11)
+
+            #eye button in entry box
+            alogin_btn2=tk.Button(alogin_etr1,image=alogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p1)
+            alogin_btn2.place(relx=0.9,rely=0.3)
+            #eye button in entry box
+            alogin_btn3=tk.Button(alogin_etr2,image=alogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p2)
+            alogin_btn3.place(relx=0.9,rely=0.3)
     
 
 
@@ -2620,10 +2654,7 @@ def user_dashboard():
             main()
 
     def custom_confirm():
-        """this function is created to destroy customize_win and show a message user profile customization successful."""
-
-        #update password
-        tk.messagebox.showinfo("success message","user profile customization successful")
+        """this function is created to reopen the admin dashboard"""
         customize_main_frame.place_forget()
             
 
