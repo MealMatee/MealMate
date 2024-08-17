@@ -1580,6 +1580,243 @@ def admin_dashboard():
         '''to change the text colour and image of button on exiting the widget'''
         admin_db_btn5.configure(image=a_db_img4ctk,text_color="#DD2323",fg_color="#D9D9D9")
    
+    #--------------------------------------------------------update food-------------------------------------------------------------#
+    def update_food1():
+        if a_db_etrr1.get() == '' or a_db_etrr2.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr2.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr1.get(), a_db_etrr2.get(), 1))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food2():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 2))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food3():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 3))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food4():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 4))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food5():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 5))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food6():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 6))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+    def update_food7():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 7))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food8():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 8))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food9():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 9))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food10():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 10))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+    def update_food11():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 11))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+    def update_food12():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 12))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+    def update_food13():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 13))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+    def update_food14():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 14))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food15():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 15))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+        
+    #--------------------------------------------------------------------------------------------------------------------------------#
+
+
 
 
     def go_to_dash():
@@ -1604,7 +1841,7 @@ def admin_dashboard():
 
     def a_db_edit():
 
-        global win3
+        global win3, a_db_etrr1, a_db_etrr2
         win3=tk.Toplevel()
         win3.title("Edit Items")
         win3.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1626,14 +1863,14 @@ def admin_dashboard():
         a_db_btnn1=CTkButton(win3_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win3_cancel)
         a_db_btnn1.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn2=CTkButton(win3_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn2=CTkButton(win3_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food1)
         a_db_btnn2.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win4_cancel():
         win4.destroy()
 
     def a_db_edit2():
-        global win4
+        global win4, a_db_etrr3,a_db_etrr4
         win4=tk.Toplevel()
         win4.title("Edit Items")
         win4.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1655,14 +1892,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win4_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win4_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win4_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win4_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food2)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win5_cancel():
-        win5.destroy()
+        win5.destroy() 
 
     def a_db_edit3():
-        global win5
+        global win5, a_db_etrr3, a_db_etrr4
         win5=tk.Toplevel()
         win5.title("Edit Items")
         win5.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1684,14 +1921,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win5_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win5_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win5_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win5_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food3)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win6_cancel():
         win6.destroy()
 
     def a_db_edit4():
-        global win6
+        global win6, a_db_etrr3, a_db_etrr4
         win6=tk.Toplevel()
         win6.title("Edit Items")
         win6.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1713,14 +1950,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win6_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win6_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win6_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win6_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food4)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win7_cancel():
         win7.destroy()
 
     def a_db_edit5():
-        global win7
+        global win7, a_db_etrr3, a_db_etrr4
         win7=tk.Toplevel()
         win7.title("Edit Items")
         win7.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1742,14 +1979,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win7_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win7_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win7_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win7_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food5)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win8_cancel():
         win8.destroy()
 
     def a_db_edit6():
-        global win8
+        global win8, a_db_etrr3, a_db_etrr4
         win8=tk.Toplevel()
         win8.title("Edit Items")
         win8.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1771,14 +2008,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win8_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win8_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win8_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win8_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food6)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win9_cancel():
         win9.destroy()
 
     def a_db_edit7():
-        global win9
+        global win9, a_db_etrr3, a_db_etrr4
         win9=tk.Toplevel()
         win9.title("Edit Items")
         win9.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1800,14 +2037,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win9_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win9_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win9_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win9_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food7)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win10_cancel():
         win10.destroy()
 
     def a_db_edit8():
-        global win10
+        global win10, a_db_etrr3, a_db_etrr4
         win10=tk.Toplevel()
         win10.title("Edit Items")
         win10.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1829,14 +2066,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win10_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win10_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win10_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win10_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food8)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win11_cancel():
         win11.destroy()
 
     def a_db_edit9():
-        global win11
+        global win11, a_db_etrr3, a_db_etrr4
         win11=tk.Toplevel()
         win11.title("Edit Items")
         win11.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1858,14 +2095,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win11_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win11_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win11_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win11_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food9)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win12_cancel():
         win12.destroy()
 
     def a_db_edit10():
-        global win12
+        global win12, a_db_etrr3, a_db_etrr4
         win12=tk.Toplevel()
         win12.title("Edit Items")
         win12.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1887,14 +2124,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win12_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win12_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win12_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win12_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food10)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win13_cancel():
         win13.destroy()
 
     def a_db_edit11():
-        global win13
+        global win13, a_db_etrr3, a_db_etrr4
         win13=tk.Toplevel()
         win13.title("Edit Items")
         win13.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1916,14 +2153,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win13_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win13_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win13_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win13_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food11)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win14_cancel():
         win14.destroy()
 
     def a_db_edit12():
-        global win14
+        global win14, a_db_etrr3, a_db_etrr4
         win14=tk.Toplevel()
         win14.title("Edit Items")
         win14.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1945,14 +2182,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win14_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win14_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win14_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win14_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food12)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
 
     def win15_cancel():
         win15.destroy()
 
     def a_db_edit13():
-        global win15
+        global win15, a_db_etrr3, a_db_etrr4
         win15=tk.Toplevel()
         win15.title("Edit Items")
         win15.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1974,14 +2211,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win15_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win15_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win15_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win15_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food13)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win16_cancel():
         win16.destroy()
 
     def a_db_edit14():
-        global win16
+        global win16, a_db_etrr3, a_db_etrr4
         win16=tk.Toplevel()
         win16.title("Edit Items")
         win16.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -2003,14 +2240,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win16_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win16_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win16_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win16_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2,command = update_food14)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win17_cancel():
         win17.destroy()
 
     def a_db_edit15():
-        global win17
+        global win17, a_db_etrr3, a_db_etrr4
         win17=tk.Toplevel()
         win17.title("Edit Items")
         win17.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -2032,7 +2269,7 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win17_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win17_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win17_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win17_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food15)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
 
 
