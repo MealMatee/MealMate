@@ -1312,11 +1312,6 @@ def admin_signup():
 
 
 
-    def message():
-        tk.messagebox.showinfo("Security question message","Security question must be answered. In case if you forgot your password, then this will help you reset your password .")
-
-
-
     global tksignup_eye,tkasignup_i,photo_asignup_logo,asignup_backtk,photosignup_image1,areset_pass_frame
     global asignup_e1, asignup_e2, asignup_e3, asignup_e4, asignup_e5
     #the bg frame
@@ -1519,6 +1514,445 @@ def admin_dashboard():
         if response==1:
             root.destroy()
 
+    def win3_cancel():
+        win3.destroy()
+
+    def a_db_edit():
+
+        global win3
+        win3=tk.Toplevel()
+        win3.title("Edit Items")
+        win3.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win3.geometry("500x250")
+        win3.resizable(0,0)
+        win3_main_frame=tk.Frame(win3,bg="#33303C")
+        win3_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl1=tk.Label(win3_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl1.place(relx=0.05,rely=0.08)
+        a_db_etrr1=CTkEntry(win3_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Chicken Burger",placeholder_text_color="#33303c")
+        a_db_etrr1.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl2=tk.Label(win3_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl2.place(relx=0.05,rely=0.33)
+        a_db_etrr2=CTkEntry(win3_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.350",placeholder_text_color="#33303C")
+        a_db_etrr2.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn1=CTkButton(win3_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win3_cancel)
+        a_db_btnn1.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn2=CTkButton(win3_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn2.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+    
+    def win4_cancel():
+        win4.destroy()
+
+    def a_db_edit2():
+        global win4
+        win4=tk.Toplevel()
+        win4.title("Edit Items")
+        win4.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win4.geometry("500x250")
+        win4.resizable(0,0)
+        win4_main_frame=tk.Frame(win4,bg="#33303C")
+        win4_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win4_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win4_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Espresso",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win4_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win4_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.210",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win4_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win4_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win4_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+    
+    def win5_cancel():
+        win5.destroy()
+
+    def a_db_edit3():
+        global win5
+        win5=tk.Toplevel()
+        win5.title("Edit Items")
+        win5.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win5.geometry("500x250")
+        win5.resizable(0,0)
+        win5_main_frame=tk.Frame(win5,bg="#33303C")
+        win5_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win5_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win5_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Chicken Pizza",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win5_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win5_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.510",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win5_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win5_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win5_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+    
+    def win6_cancel():
+        win6.destroy()
+
+    def a_db_edit4():
+        global win6
+        win6=tk.Toplevel()
+        win6.title("Edit Items")
+        win6.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win6.geometry("500x250")
+        win6.resizable(0,0)
+        win6_main_frame=tk.Frame(win6,bg="#33303C")
+        win6_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win6_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win6_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Pepsi",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win6_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win6_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.70",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win6_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win6_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win6_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+    
+    def win7_cancel():
+        win7.destroy()
+
+    def a_db_edit5():
+        global win7
+        win7=tk.Toplevel()
+        win7.title("Edit Items")
+        win7.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win7.geometry("500x250")
+        win7.resizable(0,0)
+        win7_main_frame=tk.Frame(win7,bg="#33303C")
+        win7_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win7_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win7_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Drumstick",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win7_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win7_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.110",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win7_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win7_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win7_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+    
+    def win8_cancel():
+        win8.destroy()
+
+    def a_db_edit6():
+        global win8
+        win8=tk.Toplevel()
+        win8.title("Edit Items")
+        win8.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win8.geometry("500x250")
+        win8.resizable(0,0)
+        win8_main_frame=tk.Frame(win8,bg="#33303C")
+        win8_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win8_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win8_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Cold Coffee",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win8_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win8_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.280",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win8_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win8_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win8_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+    
+    def win9_cancel():
+        win9.destroy()
+
+    def a_db_edit7():
+        global win9
+        win9=tk.Toplevel()
+        win9.title("Edit Items")
+        win9.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win9.geometry("500x250")
+        win9.resizable(0,0)
+        win9_main_frame=tk.Frame(win9,bg="#33303C")
+        win9_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win9_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win9_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="French Fries",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win9_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win9_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.280",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win9_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win9_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win9_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+    
+    def win10_cancel():
+        win10.destroy()
+
+    def a_db_edit8():
+        global win10
+        win10=tk.Toplevel()
+        win10.title("Edit Items")
+        win10.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win10.geometry("500x250")
+        win10.resizable(0,0)
+        win10_main_frame=tk.Frame(win10,bg="#33303C")
+        win10_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win10_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win10_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Coca Cola",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win10_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win10_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.70",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win10_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win10_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win10_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+    
+    def win11_cancel():
+        win11.destroy()
+
+    def a_db_edit9():
+        global win11
+        win11=tk.Toplevel()
+        win11.title("Edit Items")
+        win11.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win11.geometry("500x250")
+        win11.resizable(0,0)
+        win11_main_frame=tk.Frame(win11,bg="#33303C")
+        win11_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win11_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win11_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Oreo Shake",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win11_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win11_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.450",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win11_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win11_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win11_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+    
+    def win12_cancel():
+        win12.destroy()
+
+    def a_db_edit10():
+        global win12
+        win12=tk.Toplevel()
+        win12.title("Edit Items")
+        win12.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win12.geometry("500x250")
+        win12.resizable(0,0)
+        win12_main_frame=tk.Frame(win12,bg="#33303C")
+        win12_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win12_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win12_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Fanta",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win12_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win12_main_frame,font=("Regular",12),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.70",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win12_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win12_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win12_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+    
+    def win13_cancel():
+        win13.destroy()
+
+    def a_db_edit11():
+        global win13
+        win13=tk.Toplevel()
+        win13.title("Edit Items")
+        win13.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win13.geometry("500x250")
+        win13.resizable(0,0)
+        win13_main_frame=tk.Frame(win13,bg="#33303C")
+        win13_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win13_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win13_main_frame,font=("Regular",13),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Cappuccino",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win13_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win13_main_frame,font=("Regular",13),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.220",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win13_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win13_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win13_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+    
+    def win14_cancel():
+        win14.destroy()
+
+    def a_db_edit12():
+        global win14
+        win14=tk.Toplevel()
+        win14.title("Edit Items")
+        win14.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win14.geometry("500x250")
+        win14.resizable(0,0)
+        win14_main_frame=tk.Frame(win14,bg="#33303C")
+        win14_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win14_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win14_main_frame,font=("Regular",13),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Chicken MoMo",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win14_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win14_main_frame,font=("Regular",13),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.200",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win14_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win14_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win14_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+
+    def win15_cancel():
+        win15.destroy()
+
+    def a_db_edit13():
+        global win15
+        win15=tk.Toplevel()
+        win15.title("Edit Items")
+        win15.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win15.geometry("500x250")
+        win15.resizable(0,0)
+        win15_main_frame=tk.Frame(win15,bg="#33303C")
+        win15_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win15_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win15_main_frame,font=("Regular",13),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Sprite",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win15_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win15_main_frame,font=("Regular",13),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.70",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win15_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win15_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win15_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+    
+    def win16_cancel():
+        win16.destroy()
+
+    def a_db_edit14():
+        global win16
+        win16=tk.Toplevel()
+        win16.title("Edit Items")
+        win16.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win16.geometry("500x250")
+        win16.resizable(0,0)
+        win16_main_frame=tk.Frame(win16,bg="#33303C")
+        win16_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win16_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win16_main_frame,font=("Regular",13),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Chicken Chowmein",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win16_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win16_main_frame,font=("Regular",13),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.250",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win16_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win16_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win16_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+    
+    def win17_cancel():
+        win17.destroy()
+
+    def a_db_edit15():
+        global win17
+        win17=tk.Toplevel()
+        win17.title("Edit Items")
+        win17.iconbitmap("pictures/32432hotbeverage_98916.ico")
+        win17.geometry("500x250")
+        win17.resizable(0,0)
+        win17_main_frame=tk.Frame(win17,bg="#33303C")
+        win17_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
+
+        a_db_labl3=tk.Label(win17_main_frame,text="Name:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl3.place(relx=0.05,rely=0.08)
+        a_db_etrr3=CTkEntry(win17_main_frame,font=("Regular",13),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Chicken Biryani",placeholder_text_color="#33303c")
+        a_db_etrr3.place(relx=0.055,rely=0.17,relwidth=0.8,relheight=0.13)
+
+        a_db_labl4=tk.Label(win17_main_frame,text="Price:",font=("Regular",13),fg="white",bg="#33303C")
+        a_db_labl4.place(relx=0.05,rely=0.33)
+        a_db_etrr4=CTkEntry(win17_main_frame,font=("Regular",13),corner_radius=0,fg_color="White",border_color="Black",text_color="#33303C",placeholder_text="Rs.250",placeholder_text_color="#33303C")
+        a_db_etrr4.place(relx=0.055,rely=0.43,relwidth=0.8,relheight=0.13)
+
+        a_db_btnn3=CTkButton(win17_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win17_cancel)
+        a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
+
+        a_db_btnn4=CTkButton(win17_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
+
+
+
+
 
 
 
@@ -1652,7 +2086,7 @@ def admin_dashboard():
     #button 1 in scrollable frame
         u_db_button1=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button1.grid(row=0,column=0,padx=20,pady=20)
-        u_db_btn4=CTkButton(u_db_button1,text="EDIT",font=("Inter",18,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn4=CTkButton(u_db_button1,text="EDIT",font=("Inter",18,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit)
         u_db_btn4.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 1
@@ -1667,7 +2101,7 @@ def admin_dashboard():
     #button 2 in scrollable frame
         u_db_button2=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button2.grid(row=0,column=2,padx=20,pady=20)
-        u_db_btn5=CTkButton(u_db_button2,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn5=CTkButton(u_db_button2,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit3)
         u_db_btn5.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 2
@@ -1682,7 +2116,7 @@ def admin_dashboard():
     #button 3 in scrollable frame
         u_db_button3=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button3.grid(row=0,column=1,padx=0,pady=0)
-        u_db_btn6=CTkButton(u_db_button3,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn6=CTkButton(u_db_button3,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit2)
         u_db_btn6.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 3
@@ -1697,7 +2131,7 @@ def admin_dashboard():
     #button 4 in scrollable frame
         u_db_button4=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button4.grid(row=0,column=3,pady=0)
-        u_db_btn7=CTkButton(u_db_button4,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn7=CTkButton(u_db_button4,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit4)
         u_db_btn7.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 4
@@ -1712,7 +2146,7 @@ def admin_dashboard():
     #button 5 in scrollable frame
         u_db_button5=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button5.grid(row=1,column=0,padx=20,pady=0)
-        u_db_btn8=CTkButton(u_db_button5,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn8=CTkButton(u_db_button5,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit5)
         u_db_btn8.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 5
@@ -1727,7 +2161,7 @@ def admin_dashboard():
     #button 6 in scrollable frame
         u_db_button6=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button6.grid(row=1,column=1,padx=0,pady=0)
-        u_db_btn9=CTkButton(u_db_button6,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn9=CTkButton(u_db_button6,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit6)
         u_db_btn9.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 6
@@ -1742,7 +2176,7 @@ def admin_dashboard():
     #button 7 in scrollable frame
         u_db_button7=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button7.grid(row=1,column=2,padx=0,pady=0)
-        u_db_btn10=CTkButton(u_db_button7,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn10=CTkButton(u_db_button7,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit7)
         u_db_btn10.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 7
@@ -1757,7 +2191,7 @@ def admin_dashboard():
     #button 8 in scrollable frame
         u_db_button8=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button8.grid(row=1,column=3,padx=0,pady=0)
-        u_db_btn11=CTkButton(u_db_button8,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn11=CTkButton(u_db_button8,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit8)
         u_db_btn11.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 8
@@ -1772,7 +2206,7 @@ def admin_dashboard():
     #button 9 in scrollable frame
         u_db_button9=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button9.grid(row=2,column=0,padx=20,pady=20)
-        u_db_btn12=CTkButton(u_db_button9,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn12=CTkButton(u_db_button9,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit9)
         u_db_btn12.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 9
@@ -1787,7 +2221,7 @@ def admin_dashboard():
     #button 10 in scrollable frame
         u_db_button10=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button10.grid(row=2,column=1,padx=0,pady=20)
-        u_db_btn13=CTkButton(u_db_button10,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn13=CTkButton(u_db_button10,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit11)
         u_db_btn13.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 10
@@ -1802,7 +2236,7 @@ def admin_dashboard():
     #button 11 in scrollable frame
         u_db_button11=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button11.grid(row=2,column=2,padx=20,pady=20)
-        u_db_btn14=CTkButton(u_db_button11,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn14=CTkButton(u_db_button11,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit12)
         u_db_btn14.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 11
@@ -1817,7 +2251,7 @@ def admin_dashboard():
     #button 12 in scrollable frame
         u_db_button12=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button12.grid(row=2,column=3,padx=0,pady=20)
-        u_db_btn15=CTkButton(u_db_button12,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn15=CTkButton(u_db_button12,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit13)
         u_db_btn15.place(rely=0.8,relx=0.15,relheight=0.15)
         u_db_label12=tk.Label(u_db_button12,text=f"    Name: {items_lst[11][0]}\n   Price: Rs.{price_lst[11][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label12.place(relx=0.15,rely=0.6)
@@ -1832,7 +2266,7 @@ def admin_dashboard():
     #button 13 in scrollable frame
         u_db_button13=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button13.grid(row=3,column=0,padx=20,pady=0)
-        u_db_btn16=CTkButton(u_db_button13,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn16=CTkButton(u_db_button13,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit10)
         u_db_btn16.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 13
@@ -1847,7 +2281,7 @@ def admin_dashboard():
     #button 14 in scrollable frame
         u_db_button14=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button14.grid(row=3,column=1,padx=0,pady=0)
-        u_db_btn17=CTkButton(u_db_button14,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn17=CTkButton(u_db_button14,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit14)
         u_db_btn17.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 14
@@ -1862,7 +2296,7 @@ def admin_dashboard():
     #button 15 in scrollable frame
         u_db_button15=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button15.grid(row=3,column=2,padx=20,pady=0)
-        u_db_btn18=CTkButton(u_db_button15,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn18=CTkButton(u_db_button15,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=a_db_edit15)
         u_db_btn18.place(rely=0.8,relx=0.15,relheight=0.15)
     #image and label for button 15 
         u_db_img17=Image.open("pictures/pngegg (4) 2Biryani.png")
@@ -2137,20 +2571,19 @@ def user_dashboard():
     def custom_confirm():
         """this function is created to destroy customize_win and show a message user profile customization successful."""
 
-
-    #-----------------------------------------------------database--------------------------------------------------#
-
         #update password
         tk.messagebox.showinfo("success message","user profile customization successful")
         customize_main_frame.place_forget()
             
-        #--------------------------------------------------------------------------------------------------------#
+
 
 
     def exit_but():
         exit_reply=tk.messagebox.askyesno("Exit?","Are you sure you want to exit ?")
         if exit_reply==1:
             root.destroy()
+
+
 
 
 
