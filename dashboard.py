@@ -258,7 +258,7 @@ def user_login():
     #--------------------------------reset password------------------------------------#
 
 
-    def reset_pass():
+    def reset_pass():   
         """this function opens the reset password page when called."""
         global ulogin_etr1,ulogin_etr2,areset_pass_frame
         usign_sec_qsn_frame.place_forget()
@@ -273,27 +273,34 @@ def user_login():
         reset_pass_label1.image = reset_pass_image_tk  #reference to the picture
         reset_pass_label1.place(relheight=1,relwidth=1)
         
-        ureset_pass_frame=tk.Frame(ureset_pass_main_frame,width=450,height=250,bd=3,relief="groove",bg="#0B1A41")
+        ureset_pass_frame=tk.Frame(ureset_pass_main_frame,width=450,height=450,bd=3,relief="groove",bg="#0B1A41")
         ureset_pass_frame.place(relx=0.38,rely=0.36)
 
+        global ulogin_etr1, ulogin_etr2,ulogin_etr0
+        #label email 
+        ulogin_lbl0=tk.Label(ureset_pass_frame,text="Enter your email:",font=("Regular",13),fg="white",bg="#0B1A41")
+        ulogin_lbl0.place(relx=0.05,rely=0.08)
+        #enter new pass entry box
+        ulogin_etr0=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",text_color="Black")
+        ulogin_etr0.place(relx=0.055,rely=0.17,relwidth=0.9,relheight=0.11)
 
-        #label
+        #new pass label
         ulogin_lbl1=tk.Label(ureset_pass_frame,text="Enter New Password:",font=("Regular",13),fg="white",bg="#0B1A41")
-        ulogin_lbl1.place(relx=0.05,rely=0.08)
+        ulogin_lbl1.place(relx=0.05,rely=0.33)
         #enter new pass entry box
         ulogin_etr1=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
-        ulogin_etr1.place(relx=0.055,rely=0.17,relwidth=0.9,relheight=0.17)
+        ulogin_etr1.place(relx=0.055,rely=0.41,relwidth=0.9,relheight=0.11)
 
         #confirm pass label
         ulogin_lbl2=tk.Label(ureset_pass_frame,text="Confirm new Password:",font=("Regular",13),fg="white",bg="#0B1A41")
-        ulogin_lbl2.place(relx=0.05,rely=0.36)
+        ulogin_lbl2.place(relx=0.05,rely=0.54)
         #entrybox for confirm password
         ulogin_etr2=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
-        ulogin_etr2.place(relx=0.055,rely=0.46,relwidth=0.9,relheight=0.17)
+        ulogin_etr2.place(relx=0.055,rely=0.62,relwidth=0.9,relheight=0.11)
 
         #the submit button
         ulogin_btn1=CTkButton(ureset_pass_frame,text="SUBMIT",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",border_width=2,command=reset_successful)
-        ulogin_btn1.place(relx=0.33,rely=0.75,relwidth=0.3,relheight=0.15)
+        ulogin_btn1.place(relx=0.37,rely=0.8,relwidth=0.3,relheight=0.1)
 
         #eye button in entry box
         ulogin_btn2=tk.Button(ulogin_etr1,image=ulogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p1)
@@ -618,27 +625,34 @@ def admin_login():
         reset_pass_label1.image = reset_pass_image_tk  #reference to the picture
         reset_pass_label1.place(relheight=1,relwidth=1)
         
-        areset_pass_frame=tk.Frame(areset_pass_main_frame,width=450,height=250,bd=3,relief="groove",bg="#0B1A41")
+        areset_pass_frame=tk.Frame(areset_pass_main_frame,width=450,height=450,bd=3,relief="groove",bg="#0B1A41")
         areset_pass_frame.place(relx=0.38,rely=0.36)
-
+        
+        global ulogin_etr1, ulogin_etr2,ulogin_etr0
+        #label email 
+        alogin_lbl0=tk.Label(areset_pass_frame,text="Enter your email:",font=("Regular",13),fg="white",bg="#0B1A41")
+        alogin_lbl0.place(relx=0.05,rely=0.08)
+        #enter new pass entry box
+        alogin_etr0=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",text_color="Black")
+        alogin_etr0.place(relx=0.055,rely=0.17,relwidth=0.9,relheight=0.11)
 
         #label
         alogin_lbl1=tk.Label(areset_pass_frame,text="Enter New Password:",font=("Regular",13),fg="white",bg="#0B1A41")
-        alogin_lbl1.place(relx=0.05,rely=0.08)
+        alogin_lbl1.place(relx=0.05,rely=0.33)
         #enter new pass entry box
         alogin_etr1=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
-        alogin_etr1.place(relx=0.055,rely=0.17,relwidth=0.9,relheight=0.17)
+        alogin_etr1.place(relx=0.055,rely=0.41,relwidth=0.9,relheight=0.11)
 
         #confirm pass label
         alogin_lbl2=tk.Label(areset_pass_frame,text="Confirm new Password:",font=("Regular",13),fg="white",bg="#0B1A41")
-        alogin_lbl2.place(relx=0.05,rely=0.36)
+        alogin_lbl2.place(relx=0.05,rely=0.54)
         #entrybox for confirm password
         alogin_etr2=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
-        alogin_etr2.place(relx=0.055,rely=0.46,relwidth=0.9,relheight=0.17)
+        alogin_etr2.place(relx=0.055,rely=0.62,relwidth=0.9,relheight=0.11)
 
         #the submit button
         alogin_btn1=CTkButton(areset_pass_frame,text="SUBMIT",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",border_width=2,command=security_update)
-        alogin_btn1.place(relx=0.33,rely=0.75,relwidth=0.3,relheight=0.15)
+        alogin_btn1.place(relx=0.35,rely=0.78,relwidth=0.3,relheight=0.11)
 
         #eye button in entry box
         alogin_btn2=tk.Button(alogin_etr1,image=alogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p1)
