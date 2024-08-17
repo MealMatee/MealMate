@@ -1052,7 +1052,7 @@ def user_signup():
     #the submit button
         usec_button1=CTkButton(usec_frame2,text="SUBMIT",fg_color="#003554",text_color="White",font=("Inter",18,"bold"),command=security_info)
         usec_button1.place(relx=0.22,rely=0.8,relwidth=0.52,relheight=0.07)
-        pass
+
 
 
 
@@ -3027,8 +3027,7 @@ def user_dashboard():
     u_db_frame=CTkFrame(u_db_mainframe,corner_radius=7,fg_color="black")
     u_db_frame.place(relwidth=0.45,relheight=0.85,relx=0.5,rely=0.15)
 
-    u_db_framee=CTkFrame(u_db_frame,fg_color="#D9D9D9",corner_radius=10)
-    u_db_framee.place(relwidth=1,relheight=0.14, rely = 0.83)
+
 
     #exit button
     u_db_btn4=CTkButton(u_db_frame1,text="EXIT",fg_color="Black",text_color="white",hover=0,font=("Inter",12,"bold"),command=exit_but)
@@ -3295,23 +3294,31 @@ def user_dashboard():
 
     #menu table frame for displaying the name, quantity and price of items
     u_db_frame3=CTkFrame(u_db_mainframe,corner_radius=12,fg_color="#D9D9D9")
-    u_db_frame3.place(relwidth=0.45,relheight=0.72,relx=0.5,rely=0.13)
+    u_db_frame3.place(relwidth=0.45,relheight=0.05,relx=0.5,rely=0.13)
 
-    #s.n label
+    u_db_frame4=CTkFrame(u_db_mainframe,corner_radius=12,fg_color="#D9D9D9")
+    u_db_frame4.place(relwidth=0.45,relheight=0.67,relx=0.5,rely=0.19)
+
+    u_db_framee=CTkFrame(u_db_frame,fg_color="#D9D9D9",corner_radius=10)
+    u_db_framee.place(relwidth=1,relheight=0.12, rely = 0.85)
+
+
+
+    #label
     u_db_lbl2=tk.Label(u_db_frame3,text="S.N",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
-    u_db_lbl2.place(relx=0.04,rely=0.03)
+    u_db_lbl2.place(relx=0.04,rely=0.17)
 
-    #Product Name label
+    #label
     u_db_lbl3=tk.Label(u_db_frame3,text="Product Name",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
-    u_db_lbl3.place(relx=0.26,rely=0.03)
+    u_db_lbl3.place(relx=0.26,rely=0.17)
 
-    #Quantity label
+    #label
     u_db_lbl4=tk.Label(u_db_frame3,text="Quantity",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
-    u_db_lbl4.place(relx=0.61,rely=0.03)
+    u_db_lbl4.place(relx=0.61,rely=0.17)
 
-    #Price label
+    #label
     u_db_lbl5=tk.Label(u_db_frame3,text="Price",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
-    u_db_lbl5.place(relx=0.85,rely=0.03)
+    u_db_lbl5.place(relx=0.85,rely=0.17)
 
 
     #separator frame
@@ -3326,9 +3333,17 @@ def user_dashboard():
     u_db_sep_frame3=tk.Frame(u_db_frame3,bg="black")
     u_db_sep_frame3.place(relwidth=0.005,relheight=1,relx=0.76)
 
+    #separator frame
+    u_db_sep_frame4=tk.Frame(u_db_frame4,bg="black")
+    u_db_sep_frame4.place(relwidth=0.005,relheight=1,relx=0.12)
+
     #separator frame 
-    u_db_sep_frame4=tk.Frame(u_db_frame3,bg="black")
-    u_db_sep_frame4.place(relwidth=1,relheight=0.008,rely=0.1)
+    u_db_sep_frame5=tk.Frame(u_db_frame4,bg="black")
+    u_db_sep_frame5.place(relwidth=0.005,relheight=1,relx=0.55)
+
+    #separator frame 
+    u_db_sep_frame6=tk.Frame(u_db_frame4,bg="black")
+    u_db_sep_frame6.place(relwidth=0.005,relheight=1,relx=0.76)
 
     main_menu()
 
