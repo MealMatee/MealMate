@@ -68,10 +68,27 @@ def user_login():
 
 
     def reset_successful():
-        '''function to destroy top label window and show a message''' 
-        usign_sec_qsn_frame.place_forget()
-        user_login()
-        tk.messagebox.showinfo("Reset Successful","Password reset successful.")
+        '''function to check if the conditions are meet and then resets the password''' 
+        #----------------------------------------------database------------------------------------------#
+        if ulogin_etr0.get() == '' or ulogin_etr1.get() == '' or ulogin_etr2.get() == '' : 
+            tk.messagebox.showerror("Error","All fields must be filled out.")
+        elif ulogin_e1.get() != ulogin_etr0.get():
+            tk.messagebox.showerror("Error","Incorrect email.")
+        elif ulogin_etr2.get()!= ulogin_etr1.get():
+            tk.messagebox.showerror("Error","Incorrect password.")
+        elif len(ulogin_etr1.get()) < 8 :
+            tk.messagebox.showerror("Error","Password must be at least 8 characters long.")
+        else:
+            #update password to user database table
+            conn=sqlite3.connect('mealmate.db')
+            c=conn.cursor()
+            c.execute("UPDATE user SET password=? WHERE email=?",(ulogin_etr2.get(),ulogin_etr0.get()))
+            conn.commit()
+            conn.close()
+            usign_sec_qsn_frame.place_forget()
+            user_login()
+            tk.messagebox.showinfo("Reset Successful","Password reset successful.")
+        #------------------------------------------------------------------------------------------------#
 
 
 
@@ -206,6 +223,7 @@ def user_login():
         usec_label1.image = usec_image_tk  #reference to the picture
         usec_label1.place(relheight=1,relwidth=1,relx=0.2499)
 
+        global usec_entry3, usec_entry2, usec_entry1
 
     #the main frame of win1 
         usec_frame1=tk.Frame(usign_sec_qsn_frame,bg="#001129")
@@ -260,56 +278,75 @@ def user_login():
 
     def reset_pass():   
         """this function opens the reset password page when called."""
-        global ulogin_etr1,ulogin_etr2,areset_pass_frame
-        usign_sec_qsn_frame.place_forget()
 
-        ureset_pass_main_frame=tk.Frame(root)
-        ureset_pass_main_frame.place(relheight=1,relwidth=1,x=0,y=0)
+        #fetch user data from user table
+        conn = sqlite3.connect("mealmate.db")
+        c = conn.cursor()
+        c.execute("SELECT * FROM user WHERE email = ?", (ulogin_e1.get(),))
+        user_data = c.fetchone()
 
-        reset_pass_image=Image.open("pictures/reset passreset_pass2.png")
-        reset_pass_image_resize=reset_pass_image.resize((1920,1080))
-        reset_pass_image_tk=ImageTk.PhotoImage(reset_pass_image_resize)
-        reset_pass_label1=tk.Label(ureset_pass_main_frame,image=reset_pass_image_tk)
-        reset_pass_label1.image = reset_pass_image_tk  #reference to the picture
-        reset_pass_label1.place(relheight=1,relwidth=1)
+
+
+
+
+        #-----------------------------------------------database---------------------------------------------#
+        if usec_entry1.get() == '' or usec_entry2.get() == '' or usec_entry3.get() == '':
+            tk.messagebox.showerror("Error","All fields are required.")
+        elif (usec_entry1.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Entered value must be a number.")
+        if usec_entry1.get() == user_data[4] and usec_entry2.get() == user_data[5] and usec_entry3.get() == user_data[6]:
         
-        ureset_pass_frame=tk.Frame(ureset_pass_main_frame,width=450,height=450,bd=3,relief="groove",bg="#0B1A41")
-        ureset_pass_frame.place(relx=0.38,rely=0.36)
+            global ulogin_etr1,ulogin_etr2,areset_pass_frame
+            usign_sec_qsn_frame.place_forget()
 
-        global ulogin_etr1, ulogin_etr2,ulogin_etr0
-        #label email 
-        ulogin_lbl0=tk.Label(ureset_pass_frame,text="Enter your email:",font=("Regular",13),fg="white",bg="#0B1A41")
-        ulogin_lbl0.place(relx=0.05,rely=0.08)
-        #enter new pass entry box
-        ulogin_etr0=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",text_color="Black")
-        ulogin_etr0.place(relx=0.055,rely=0.17,relwidth=0.9,relheight=0.11)
+            ureset_pass_main_frame=tk.Frame(root)
+            ureset_pass_main_frame.place(relheight=1,relwidth=1,x=0,y=0)
 
-        #new pass label
-        ulogin_lbl1=tk.Label(ureset_pass_frame,text="Enter New Password:",font=("Regular",13),fg="white",bg="#0B1A41")
-        ulogin_lbl1.place(relx=0.05,rely=0.33)
-        #enter new pass entry box
-        ulogin_etr1=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
-        ulogin_etr1.place(relx=0.055,rely=0.41,relwidth=0.9,relheight=0.11)
+            reset_pass_image=Image.open("pictures/reset passreset_pass2.png")
+            reset_pass_image_resize=reset_pass_image.resize((1920,1080))
+            reset_pass_image_tk=ImageTk.PhotoImage(reset_pass_image_resize)
+            reset_pass_label1=tk.Label(ureset_pass_main_frame,image=reset_pass_image_tk)
+            reset_pass_label1.image = reset_pass_image_tk  #reference to the picture
+            reset_pass_label1.place(relheight=1,relwidth=1)
+            
+            ureset_pass_frame=tk.Frame(ureset_pass_main_frame,width=450,height=450,bd=3,relief="groove",bg="#0B1A41")
+            ureset_pass_frame.place(relx=0.38,rely=0.36)
 
-        #confirm pass label
-        ulogin_lbl2=tk.Label(ureset_pass_frame,text="Confirm new Password:",font=("Regular",13),fg="white",bg="#0B1A41")
-        ulogin_lbl2.place(relx=0.05,rely=0.54)
-        #entrybox for confirm password
-        ulogin_etr2=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
-        ulogin_etr2.place(relx=0.055,rely=0.62,relwidth=0.9,relheight=0.11)
+            global ulogin_etr1, ulogin_etr2,ulogin_etr0
+            #label email 
+            ulogin_lbl0=tk.Label(ureset_pass_frame,text="Enter your email:",font=("Regular",13),fg="white",bg="#0B1A41")
+            ulogin_lbl0.place(relx=0.05,rely=0.08)
+            #enter new pass entry box
+            ulogin_etr0=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",text_color="Black")
+            ulogin_etr0.place(relx=0.055,rely=0.17,relwidth=0.9,relheight=0.11)
 
-        #the submit button
-        ulogin_btn1=CTkButton(ureset_pass_frame,text="SUBMIT",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",border_width=2,command=reset_successful)
-        ulogin_btn1.place(relx=0.37,rely=0.8,relwidth=0.3,relheight=0.1)
+            #new pass label
+            ulogin_lbl1=tk.Label(ureset_pass_frame,text="Enter New Password:",font=("Regular",13),fg="white",bg="#0B1A41")
+            ulogin_lbl1.place(relx=0.05,rely=0.33)
+            #enter new pass entry box
+            ulogin_etr1=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
+            ulogin_etr1.place(relx=0.055,rely=0.41,relwidth=0.9,relheight=0.11)
 
-        #eye button in entry box
-        ulogin_btn2=tk.Button(ulogin_etr1,image=ulogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p1)
-        ulogin_btn2.place(relx=0.9,rely=0.3)
-        #eye button in entry box
-        ulogin_btn3=tk.Button(ulogin_etr2,image=ulogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p2)
-        ulogin_btn3.place(relx=0.9,rely=0.3)
+            #confirm pass label
+            ulogin_lbl2=tk.Label(ureset_pass_frame,text="Confirm new Password:",font=("Regular",13),fg="white",bg="#0B1A41")
+            ulogin_lbl2.place(relx=0.05,rely=0.54)
+            #entrybox for confirm password
+            ulogin_etr2=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
+            ulogin_etr2.place(relx=0.055,rely=0.62,relwidth=0.9,relheight=0.11)
+
+            #the submit button
+            ulogin_btn1=CTkButton(ureset_pass_frame,text="SUBMIT",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",border_width=2,command=reset_successful)
+            ulogin_btn1.place(relx=0.37,rely=0.8,relwidth=0.3,relheight=0.1)
+
+            #eye button in entry box
+            ulogin_btn2=tk.Button(ulogin_etr1,image=ulogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p1)
+            ulogin_btn2.place(relx=0.9,rely=0.3)
+            #eye button in entry box
+            ulogin_btn3=tk.Button(ulogin_etr2,image=ulogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p2)
+            ulogin_btn3.place(relx=0.9,rely=0.3)
     
 
+        #----------------------------------------------------------------------------------------------------#
 
 #making pictures global so they dont get garbage collected 
     global ulogin_eyetk,ulogin_backtk,photo_ulogin_img1
@@ -467,16 +504,34 @@ def admin_login():
 
     def security_update():
         '''
-        this function is made to show a message when user clicks submit on win1 window
+        this function is made to reset the old password
         '''
+        #----------------------------------------------database------------------------------------------#
+        if alogin_etr0.get() == '' or alogin_etr1.get() == '' or alogin_etr2.get() == '' : 
+            tk.messagebox.showerror("Error","All fields must be filled out.")
+        elif alogin_e1.get() != alogin_etr0.get():
+            tk.messagebox.showerror("Error","Incorrect email.")
+        elif alogin_etr2.get()!= alogin_etr1.get():
+            tk.messagebox.showerror("Error","Incorrect password.")
+        elif len(alogin_etr1.get()) < 8 :
+            tk.messagebox.showerror("Error","Password must be at least 8 characters long.")
+        else:
+            #update password to user database table
+            conn=sqlite3.connect('mealmate.db')
+            c=conn.cursor()
+            c.execute("UPDATE admin SET password=? WHERE email=?",(alogin_etr2.get(),alogin_etr0.get()))
+            conn.commit()
+            conn.close()
+            areset_pass_main_frame.place_forget()
+            asign_sec_qsn_frame.place_forget()
+            areset_pass_frame.place_forget()
+            admin_login()        
+            tk.messagebox.showinfo("Reset Successful","Password reset successful.")
+        #------------------------------------------------------------------------------------------------#
 
 
 
-        areset_pass_main_frame.place_forget()
-        asign_sec_qsn_frame.place_forget()
-        areset_pass_frame.place_forget()
-        admin_login()        
-        tk.messagebox.showinfo("Successful Message ","Security questions Entry Successful !")
+        
         
 
     def login():
@@ -529,7 +584,7 @@ def admin_login():
         """This function opens the security questions page when called."""
         main_frame4.place_forget()
         main_frame1.place_forget()
-        global asign_sec_qsn_frame
+        global asign_sec_qsn_frame,asec_entry1,asec_entry2,asec_entry3
         
         asign_sec_qsn_frame=tk.Frame(root)
         asign_sec_qsn_frame.place(relheight=1,relwidth=1,x=0,y=0)
@@ -612,54 +667,70 @@ def admin_login():
 
     def reset_pass():
         """this function opens the reset password page when called"""
-        global ulogin_etr2,areset_pass_frame,alogin_etr1,alogin_etr2,areset_pass_main_frame
-        asign_sec_qsn_frame.place_forget()
+        #fetch admin data from admin table
+        conn = sqlite3.connect("mealmate.db")
+        c = conn.cursor()
+        c.execute("SELECT * FROM admin WHERE email = ?", (alogin_e1.get(),))
+        admin_data = c.fetchone()
 
-        areset_pass_main_frame=tk.Frame(root)
-        areset_pass_main_frame.place(relheight=1,relwidth=1,x=0,y=0)
 
-        reset_pass_image=Image.open("pictures/reset passreset_pass2.png")
-        reset_pass_image_resize=reset_pass_image.resize((1920,1080))
-        reset_pass_image_tk=ImageTk.PhotoImage(reset_pass_image_resize)
-        reset_pass_label1=tk.Label(areset_pass_main_frame,image=reset_pass_image_tk)
-        reset_pass_label1.image = reset_pass_image_tk  #reference to the picture
-        reset_pass_label1.place(relheight=1,relwidth=1)
-        
-        areset_pass_frame=tk.Frame(areset_pass_main_frame,width=450,height=450,bd=3,relief="groove",bg="#0B1A41")
-        areset_pass_frame.place(relx=0.38,rely=0.36)
-        
-        global ulogin_etr1, ulogin_etr2,ulogin_etr0
-        #label email 
-        alogin_lbl0=tk.Label(areset_pass_frame,text="Enter your email:",font=("Regular",13),fg="white",bg="#0B1A41")
-        alogin_lbl0.place(relx=0.05,rely=0.08)
-        #enter new pass entry box
-        alogin_etr0=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",text_color="Black")
-        alogin_etr0.place(relx=0.055,rely=0.17,relwidth=0.9,relheight=0.11)
 
-        #label
-        alogin_lbl1=tk.Label(areset_pass_frame,text="Enter New Password:",font=("Regular",13),fg="white",bg="#0B1A41")
-        alogin_lbl1.place(relx=0.05,rely=0.33)
-        #enter new pass entry box
-        alogin_etr1=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
-        alogin_etr1.place(relx=0.055,rely=0.41,relwidth=0.9,relheight=0.11)
 
-        #confirm pass label
-        alogin_lbl2=tk.Label(areset_pass_frame,text="Confirm new Password:",font=("Regular",13),fg="white",bg="#0B1A41")
-        alogin_lbl2.place(relx=0.05,rely=0.54)
-        #entrybox for confirm password
-        alogin_etr2=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
-        alogin_etr2.place(relx=0.055,rely=0.62,relwidth=0.9,relheight=0.11)
 
-        #the submit button
-        alogin_btn1=CTkButton(areset_pass_frame,text="SUBMIT",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",border_width=2,command=security_update)
-        alogin_btn1.place(relx=0.35,rely=0.78,relwidth=0.3,relheight=0.11)
+        #-----------------------------------------------database---------------------------------------------#
+        if asec_entry1.get() == '' or asec_entry2.get() == '' or asec_entry3.get() == '':
+            tk.messagebox.showerror("Error","All fields are required.")
+        elif (asec_entry1.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Entered value must be a number.")
+        if asec_entry1.get() == admin_data[4] and asec_entry2.get() == admin_data[5] and asec_entry3.get() == admin_data[6]:
+            global ulogin_etr2,areset_pass_frame,alogin_etr1,alogin_etr2,areset_pass_main_frame
+            asign_sec_qsn_frame.place_forget()
 
-        #eye button in entry box
-        alogin_btn2=tk.Button(alogin_etr1,image=alogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p1)
-        alogin_btn2.place(relx=0.9,rely=0.3)
-        #eye button in entry box
-        alogin_btn3=tk.Button(alogin_etr2,image=alogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p2)
-        alogin_btn3.place(relx=0.9,rely=0.3)
+            areset_pass_main_frame=tk.Frame(root)
+            areset_pass_main_frame.place(relheight=1,relwidth=1,x=0,y=0)
+
+            reset_pass_image=Image.open("pictures/reset passreset_pass2.png")
+            reset_pass_image_resize=reset_pass_image.resize((1920,1080))
+            reset_pass_image_tk=ImageTk.PhotoImage(reset_pass_image_resize)
+            reset_pass_label1=tk.Label(areset_pass_main_frame,image=reset_pass_image_tk)
+            reset_pass_label1.image = reset_pass_image_tk  #reference to the picture
+            reset_pass_label1.place(relheight=1,relwidth=1)
+            
+            areset_pass_frame=tk.Frame(areset_pass_main_frame,width=450,height=450,bd=3,relief="groove",bg="#0B1A41")
+            areset_pass_frame.place(relx=0.38,rely=0.36)
+            
+            global alogin_etr1, alogin_etr2,alogin_etr0
+            #label email 
+            alogin_lbl0=tk.Label(areset_pass_frame,text="Enter your email:",font=("Regular",13),fg="white",bg="#0B1A41")
+            alogin_lbl0.place(relx=0.05,rely=0.08)
+            #enter new pass entry box
+            alogin_etr0=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",text_color="Black")
+            alogin_etr0.place(relx=0.055,rely=0.17,relwidth=0.9,relheight=0.11)
+
+            #label
+            alogin_lbl1=tk.Label(areset_pass_frame,text="Enter New Password:",font=("Regular",13),fg="white",bg="#0B1A41")
+            alogin_lbl1.place(relx=0.05,rely=0.33)
+            #enter new pass entry box
+            alogin_etr1=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
+            alogin_etr1.place(relx=0.055,rely=0.41,relwidth=0.9,relheight=0.11)
+
+            #confirm pass label
+            alogin_lbl2=tk.Label(areset_pass_frame,text="Confirm new Password:",font=("Regular",13),fg="white",bg="#0B1A41")
+            alogin_lbl2.place(relx=0.05,rely=0.54)
+            #entrybox for confirm password
+            alogin_etr2=CTkEntry(areset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
+            alogin_etr2.place(relx=0.055,rely=0.62,relwidth=0.9,relheight=0.11)
+
+            #the submit button
+            alogin_btn1=CTkButton(areset_pass_frame,text="SUBMIT",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",border_width=2,command=security_update)
+            alogin_btn1.place(relx=0.35,rely=0.78,relwidth=0.3,relheight=0.11)
+
+            #eye button in entry box
+            alogin_btn2=tk.Button(alogin_etr1,image=alogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p1)
+            alogin_btn2.place(relx=0.9,rely=0.3)
+            #eye button in entry box
+            alogin_btn3=tk.Button(alogin_etr2,image=alogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p2)
+            alogin_btn3.place(relx=0.9,rely=0.3)
     
 
 
@@ -981,7 +1052,7 @@ def user_signup():
     #the submit button
         usec_button1=CTkButton(usec_frame2,text="SUBMIT",fg_color="#003554",text_color="White",font=("Inter",18,"bold"),command=security_info)
         usec_button1.place(relx=0.22,rely=0.8,relwidth=0.52,relheight=0.07)
-        pass
+
 
 
 
@@ -1509,6 +1580,243 @@ def admin_dashboard():
         '''to change the text colour and image of button on exiting the widget'''
         admin_db_btn5.configure(image=a_db_img4ctk,text_color="#DD2323",fg_color="#D9D9D9")
    
+    #--------------------------------------------------------update food-------------------------------------------------------------#
+    def update_food1():
+        if a_db_etrr1.get() == '' or a_db_etrr2.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr2.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr1.get(), a_db_etrr2.get(), 1))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food2():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 2))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food3():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 3))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food4():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 4))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food5():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 5))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food6():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 6))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+    def update_food7():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 7))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food8():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 8))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food9():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 9))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food10():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 10))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+    def update_food11():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 11))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+    def update_food12():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 12))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+    def update_food13():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 13))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+    def update_food14():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 14))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+
+
+
+    def update_food15():
+        if a_db_etrr3.get() == '' or a_db_etrr4.get() == '':
+            tk.messagebox.showerror("Error","Please enter all fields")
+        elif (a_db_etrr4.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Price should be a number")
+        else:
+            conn = sqlite3.connect('mealmate.db')
+            c = conn.cursor()
+            c.execute("UPDATE item SET item_name =?, item_price =? where rowid = ?", (a_db_etrr3.get(), a_db_etrr4.get(), 15))
+            conn.commit()
+            conn.close()
+            tk.messagebox.showinfo("Success","Food item updated successfully")
+
+        
+    #--------------------------------------------------------------------------------------------------------------------------------#
+
+
 
 
     def go_to_dash():
@@ -1533,7 +1841,7 @@ def admin_dashboard():
 
     def a_db_edit():
 
-        global win3
+        global win3, a_db_etrr1, a_db_etrr2
         win3=tk.Toplevel()
         win3.title("Edit Items")
         win3.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1555,14 +1863,14 @@ def admin_dashboard():
         a_db_btnn1=CTkButton(win3_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win3_cancel)
         a_db_btnn1.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn2=CTkButton(win3_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn2=CTkButton(win3_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food1)
         a_db_btnn2.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win4_cancel():
         win4.destroy()
 
     def a_db_edit2():
-        global win4
+        global win4, a_db_etrr3,a_db_etrr4
         win4=tk.Toplevel()
         win4.title("Edit Items")
         win4.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1584,14 +1892,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win4_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win4_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win4_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win4_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food2)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win5_cancel():
-        win5.destroy()
+        win5.destroy() 
 
     def a_db_edit3():
-        global win5
+        global win5, a_db_etrr3, a_db_etrr4
         win5=tk.Toplevel()
         win5.title("Edit Items")
         win5.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1613,14 +1921,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win5_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win5_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win5_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win5_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food3)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win6_cancel():
         win6.destroy()
 
     def a_db_edit4():
-        global win6
+        global win6, a_db_etrr3, a_db_etrr4
         win6=tk.Toplevel()
         win6.title("Edit Items")
         win6.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1642,14 +1950,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win6_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win6_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win6_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win6_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food4)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win7_cancel():
         win7.destroy()
 
     def a_db_edit5():
-        global win7
+        global win7, a_db_etrr3, a_db_etrr4
         win7=tk.Toplevel()
         win7.title("Edit Items")
         win7.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1671,14 +1979,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win7_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win7_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win7_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win7_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food5)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win8_cancel():
         win8.destroy()
 
     def a_db_edit6():
-        global win8
+        global win8, a_db_etrr3, a_db_etrr4
         win8=tk.Toplevel()
         win8.title("Edit Items")
         win8.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1700,14 +2008,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win8_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win8_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win8_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win8_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food6)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win9_cancel():
         win9.destroy()
 
     def a_db_edit7():
-        global win9
+        global win9, a_db_etrr3, a_db_etrr4
         win9=tk.Toplevel()
         win9.title("Edit Items")
         win9.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1729,14 +2037,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win9_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win9_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win9_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win9_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food7)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win10_cancel():
         win10.destroy()
 
     def a_db_edit8():
-        global win10
+        global win10, a_db_etrr3, a_db_etrr4
         win10=tk.Toplevel()
         win10.title("Edit Items")
         win10.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1758,14 +2066,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win10_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win10_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win10_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win10_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food8)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win11_cancel():
         win11.destroy()
 
     def a_db_edit9():
-        global win11
+        global win11, a_db_etrr3, a_db_etrr4
         win11=tk.Toplevel()
         win11.title("Edit Items")
         win11.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1787,14 +2095,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win11_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win11_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win11_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win11_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food9)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win12_cancel():
         win12.destroy()
 
     def a_db_edit10():
-        global win12
+        global win12, a_db_etrr3, a_db_etrr4
         win12=tk.Toplevel()
         win12.title("Edit Items")
         win12.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1816,14 +2124,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win12_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win12_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win12_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win12_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food10)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win13_cancel():
         win13.destroy()
 
     def a_db_edit11():
-        global win13
+        global win13, a_db_etrr3, a_db_etrr4
         win13=tk.Toplevel()
         win13.title("Edit Items")
         win13.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1845,14 +2153,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win13_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win13_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win13_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win13_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food11)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win14_cancel():
         win14.destroy()
 
     def a_db_edit12():
-        global win14
+        global win14, a_db_etrr3, a_db_etrr4
         win14=tk.Toplevel()
         win14.title("Edit Items")
         win14.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1874,14 +2182,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win14_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win14_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win14_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win14_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food12)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
 
     def win15_cancel():
         win15.destroy()
 
     def a_db_edit13():
-        global win15
+        global win15, a_db_etrr3, a_db_etrr4
         win15=tk.Toplevel()
         win15.title("Edit Items")
         win15.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1903,14 +2211,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win15_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win15_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win15_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win15_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food13)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win16_cancel():
         win16.destroy()
 
     def a_db_edit14():
-        global win16
+        global win16, a_db_etrr3, a_db_etrr4
         win16=tk.Toplevel()
         win16.title("Edit Items")
         win16.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1932,14 +2240,14 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win16_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win16_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win16_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win16_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2,command = update_food14)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
     
     def win17_cancel():
         win17.destroy()
 
     def a_db_edit15():
-        global win17
+        global win17, a_db_etrr3, a_db_etrr4
         win17=tk.Toplevel()
         win17.title("Edit Items")
         win17.iconbitmap("pictures/32432hotbeverage_98916.ico")
@@ -1961,7 +2269,7 @@ def admin_dashboard():
         a_db_btnn3=CTkButton(win17_main_frame,text="CANCEL",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Red",hover_color="#D9D9D9",border_width=2,command=win17_cancel)
         a_db_btnn3.place(relx=0.1,rely=0.75,relwidth=0.3,relheight=0.15)
 
-        a_db_btnn4=CTkButton(win17_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2)
+        a_db_btnn4=CTkButton(win17_main_frame,text="CONFIRM",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",hover_color="#D9D9D9",border_width=2, command = update_food15)
         a_db_btnn4.place(relx=0.6,rely=0.75,relwidth=0.3,relheight=0.15)
 
 
@@ -2583,10 +2891,7 @@ def user_dashboard():
             main()
 
     def custom_confirm():
-        """this function is created to destroy customize_win and show a message user profile customization successful."""
-
-        #update password
-        tk.messagebox.showinfo("success message","user profile customization successful")
+        """this function is created to reopen the admin dashboard"""
         customize_main_frame.place_forget()
             
 
@@ -2722,8 +3027,7 @@ def user_dashboard():
     u_db_frame=CTkFrame(u_db_mainframe,corner_radius=7,fg_color="black")
     u_db_frame.place(relwidth=0.45,relheight=0.85,relx=0.5,rely=0.15)
 
-    u_db_framee=CTkFrame(u_db_frame,fg_color="#D9D9D9",corner_radius=10)
-    u_db_framee.place(relwidth=1,relheight=0.14, rely = 0.83)
+
 
     #exit button
     u_db_btn4=CTkButton(u_db_frame1,text="EXIT",fg_color="Black",text_color="white",hover=0,font=("Inter",12,"bold"),command=exit_but)
@@ -2990,23 +3294,31 @@ def user_dashboard():
 
     #menu table frame for displaying the name, quantity and price of items
     u_db_frame3=CTkFrame(u_db_mainframe,corner_radius=12,fg_color="#D9D9D9")
-    u_db_frame3.place(relwidth=0.45,relheight=0.72,relx=0.5,rely=0.13)
+    u_db_frame3.place(relwidth=0.45,relheight=0.05,relx=0.5,rely=0.13)
 
-    #s.n label
+    u_db_frame4=CTkFrame(u_db_mainframe,corner_radius=12,fg_color="#D9D9D9")
+    u_db_frame4.place(relwidth=0.45,relheight=0.67,relx=0.5,rely=0.19)
+
+    u_db_framee=CTkFrame(u_db_frame,fg_color="#D9D9D9",corner_radius=10)
+    u_db_framee.place(relwidth=1,relheight=0.12, rely = 0.85)
+
+
+
+    #label
     u_db_lbl2=tk.Label(u_db_frame3,text="S.N",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
-    u_db_lbl2.place(relx=0.04,rely=0.03)
+    u_db_lbl2.place(relx=0.04,rely=0.17)
 
-    #Product Name label
+    #label
     u_db_lbl3=tk.Label(u_db_frame3,text="Product Name",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
-    u_db_lbl3.place(relx=0.26,rely=0.03)
+    u_db_lbl3.place(relx=0.26,rely=0.17)
 
-    #Quantity label
+    #label
     u_db_lbl4=tk.Label(u_db_frame3,text="Quantity",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
-    u_db_lbl4.place(relx=0.61,rely=0.03)
+    u_db_lbl4.place(relx=0.61,rely=0.17)
 
-    #Price label
+    #label
     u_db_lbl5=tk.Label(u_db_frame3,text="Price",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
-    u_db_lbl5.place(relx=0.85,rely=0.03)
+    u_db_lbl5.place(relx=0.85,rely=0.17)
 
 
     #separator frame
@@ -3021,9 +3333,17 @@ def user_dashboard():
     u_db_sep_frame3=tk.Frame(u_db_frame3,bg="black")
     u_db_sep_frame3.place(relwidth=0.005,relheight=1,relx=0.76)
 
+    #separator frame
+    u_db_sep_frame4=tk.Frame(u_db_frame4,bg="black")
+    u_db_sep_frame4.place(relwidth=0.005,relheight=1,relx=0.12)
+
     #separator frame 
-    u_db_sep_frame4=tk.Frame(u_db_frame3,bg="black")
-    u_db_sep_frame4.place(relwidth=1,relheight=0.008,rely=0.1)
+    u_db_sep_frame5=tk.Frame(u_db_frame4,bg="black")
+    u_db_sep_frame5.place(relwidth=0.005,relheight=1,relx=0.55)
+
+    #separator frame 
+    u_db_sep_frame6=tk.Frame(u_db_frame4,bg="black")
+    u_db_sep_frame6.place(relwidth=0.005,relheight=1,relx=0.76)
 
     main_menu()
 
