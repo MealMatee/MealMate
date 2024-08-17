@@ -69,9 +69,26 @@ def user_login():
 
     def reset_successful():
         '''function to destroy top label window and show a message''' 
-        usign_sec_qsn_frame.place_forget()
-        user_login()
-        tk.messagebox.showinfo("Reset Successful","Password reset successful.")
+        #----------------------------------------------database------------------------------------------#
+        if ulogin_etr0.get() == '' or ulogin_etr1.get() == '' or ulogin_etr2.get() == '' : 
+            tk.messagebox.showerror("Error","All fields must be filled out.")
+        elif ulogin_e1.get() != ulogin_etr0.get():
+            tk.messagebox.showerror("Error","Incorrect email.")
+        elif ulogin_etr2.get()!= ulogin_etr1.get():
+            tk.messagebox.showerror("Error","Incorrect password.")
+        elif len(ulogin_etr1.get()) < 8 :
+            tk.messagebox.showerror("Error","Password must be at least 8 characters long.")
+        else:
+            #update password to user database table
+            conn=sqlite3.connect('mealmate.db')
+            c=conn.cursor()
+            c.execute("UPDATE user SET password=? WHERE email=?",(ulogin_etr2.get(),ulogin_etr0.get()))
+            conn.commit()
+            conn.close()
+            usign_sec_qsn_frame.place_forget()
+            user_login()
+            tk.messagebox.showinfo("Reset Successful","Password reset successful.")
+        #------------------------------------------------------------------------------------------------#
 
 
 
@@ -206,6 +223,7 @@ def user_login():
         usec_label1.image = usec_image_tk  #reference to the picture
         usec_label1.place(relheight=1,relwidth=1,relx=0.2499)
 
+        global usec_entry3, usec_entry2, usec_entry1
 
     #the main frame of win1 
         usec_frame1=tk.Frame(usign_sec_qsn_frame,bg="#001129")
@@ -260,56 +278,75 @@ def user_login():
 
     def reset_pass():   
         """this function opens the reset password page when called."""
-        global ulogin_etr1,ulogin_etr2,areset_pass_frame
-        usign_sec_qsn_frame.place_forget()
 
-        ureset_pass_main_frame=tk.Frame(root)
-        ureset_pass_main_frame.place(relheight=1,relwidth=1,x=0,y=0)
+        #fetch user data from user table
+        conn = sqlite3.connect("mealmate.db")
+        c = conn.cursor()
+        c.execute("SELECT * FROM user WHERE email = ?", (ulogin_e1.get(),))
+        user_data = c.fetchone()
 
-        reset_pass_image=Image.open("pictures/reset passreset_pass2.png")
-        reset_pass_image_resize=reset_pass_image.resize((1920,1080))
-        reset_pass_image_tk=ImageTk.PhotoImage(reset_pass_image_resize)
-        reset_pass_label1=tk.Label(ureset_pass_main_frame,image=reset_pass_image_tk)
-        reset_pass_label1.image = reset_pass_image_tk  #reference to the picture
-        reset_pass_label1.place(relheight=1,relwidth=1)
+
+
+
+
+        #-----------------------------------------------database---------------------------------------------#
+        if usec_entry1.get() == '' or usec_entry2.get() == '' or usec_entry3.get() == '':
+            tk.messagebox.showerror("Error","All fields are required.")
+        elif (usec_entry1.get()).isdigit() == False:
+            tk.messagebox.showerror("Error","Entered value must be a number.")
+        if usec_entry1.get() == user_data[4] and usec_entry2.get() == user_data[5] and usec_entry3.get() == user_data[6]:
         
-        ureset_pass_frame=tk.Frame(ureset_pass_main_frame,width=450,height=450,bd=3,relief="groove",bg="#0B1A41")
-        ureset_pass_frame.place(relx=0.38,rely=0.36)
+            global ulogin_etr1,ulogin_etr2,areset_pass_frame
+            usign_sec_qsn_frame.place_forget()
 
-        global ulogin_etr1, ulogin_etr2,ulogin_etr0
-        #label email 
-        ulogin_lbl0=tk.Label(ureset_pass_frame,text="Enter your email:",font=("Regular",13),fg="white",bg="#0B1A41")
-        ulogin_lbl0.place(relx=0.05,rely=0.08)
-        #enter new pass entry box
-        ulogin_etr0=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",text_color="Black")
-        ulogin_etr0.place(relx=0.055,rely=0.17,relwidth=0.9,relheight=0.11)
+            ureset_pass_main_frame=tk.Frame(root)
+            ureset_pass_main_frame.place(relheight=1,relwidth=1,x=0,y=0)
 
-        #new pass label
-        ulogin_lbl1=tk.Label(ureset_pass_frame,text="Enter New Password:",font=("Regular",13),fg="white",bg="#0B1A41")
-        ulogin_lbl1.place(relx=0.05,rely=0.33)
-        #enter new pass entry box
-        ulogin_etr1=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
-        ulogin_etr1.place(relx=0.055,rely=0.41,relwidth=0.9,relheight=0.11)
+            reset_pass_image=Image.open("pictures/reset passreset_pass2.png")
+            reset_pass_image_resize=reset_pass_image.resize((1920,1080))
+            reset_pass_image_tk=ImageTk.PhotoImage(reset_pass_image_resize)
+            reset_pass_label1=tk.Label(ureset_pass_main_frame,image=reset_pass_image_tk)
+            reset_pass_label1.image = reset_pass_image_tk  #reference to the picture
+            reset_pass_label1.place(relheight=1,relwidth=1)
+            
+            ureset_pass_frame=tk.Frame(ureset_pass_main_frame,width=450,height=450,bd=3,relief="groove",bg="#0B1A41")
+            ureset_pass_frame.place(relx=0.38,rely=0.36)
 
-        #confirm pass label
-        ulogin_lbl2=tk.Label(ureset_pass_frame,text="Confirm new Password:",font=("Regular",13),fg="white",bg="#0B1A41")
-        ulogin_lbl2.place(relx=0.05,rely=0.54)
-        #entrybox for confirm password
-        ulogin_etr2=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
-        ulogin_etr2.place(relx=0.055,rely=0.62,relwidth=0.9,relheight=0.11)
+            global ulogin_etr1, ulogin_etr2,ulogin_etr0
+            #label email 
+            ulogin_lbl0=tk.Label(ureset_pass_frame,text="Enter your email:",font=("Regular",13),fg="white",bg="#0B1A41")
+            ulogin_lbl0.place(relx=0.05,rely=0.08)
+            #enter new pass entry box
+            ulogin_etr0=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",text_color="Black")
+            ulogin_etr0.place(relx=0.055,rely=0.17,relwidth=0.9,relheight=0.11)
 
-        #the submit button
-        ulogin_btn1=CTkButton(ureset_pass_frame,text="SUBMIT",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",border_width=2,command=reset_successful)
-        ulogin_btn1.place(relx=0.37,rely=0.8,relwidth=0.3,relheight=0.1)
+            #new pass label
+            ulogin_lbl1=tk.Label(ureset_pass_frame,text="Enter New Password:",font=("Regular",13),fg="white",bg="#0B1A41")
+            ulogin_lbl1.place(relx=0.05,rely=0.33)
+            #enter new pass entry box
+            ulogin_etr1=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
+            ulogin_etr1.place(relx=0.055,rely=0.41,relwidth=0.9,relheight=0.11)
 
-        #eye button in entry box
-        ulogin_btn2=tk.Button(ulogin_etr1,image=ulogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p1)
-        ulogin_btn2.place(relx=0.9,rely=0.3)
-        #eye button in entry box
-        ulogin_btn3=tk.Button(ulogin_etr2,image=ulogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p2)
-        ulogin_btn3.place(relx=0.9,rely=0.3)
+            #confirm pass label
+            ulogin_lbl2=tk.Label(ureset_pass_frame,text="Confirm new Password:",font=("Regular",13),fg="white",bg="#0B1A41")
+            ulogin_lbl2.place(relx=0.05,rely=0.54)
+            #entrybox for confirm password
+            ulogin_etr2=CTkEntry(ureset_pass_frame,font=("Regular",12),corner_radius=8,fg_color="White",border_color="Black",show="*",text_color="Black")
+            ulogin_etr2.place(relx=0.055,rely=0.62,relwidth=0.9,relheight=0.11)
+
+            #the submit button
+            ulogin_btn1=CTkButton(ureset_pass_frame,text="SUBMIT",font=("Inter",15,"bold"),corner_radius=0,fg_color="White",border_color="Black",text_color="Black",border_width=2,command=reset_successful)
+            ulogin_btn1.place(relx=0.37,rely=0.8,relwidth=0.3,relheight=0.1)
+
+            #eye button in entry box
+            ulogin_btn2=tk.Button(ulogin_etr1,image=ulogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p1)
+            ulogin_btn2.place(relx=0.9,rely=0.3)
+            #eye button in entry box
+            ulogin_btn3=tk.Button(ulogin_etr2,image=ulogin_eye_imgtk,bg="white",activebackground="white",bd=0,command=reset_p2)
+            ulogin_btn3.place(relx=0.9,rely=0.3)
     
 
+        #----------------------------------------------------------------------------------------------------#
 
 #making pictures global so they dont get garbage collected 
     global ulogin_eyetk,ulogin_backtk,photo_ulogin_img1
