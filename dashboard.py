@@ -3305,25 +3305,25 @@ def user_dashboard():
 
 
     #label
-    u_db_lbl2=tk.Label(u_db_frame3,text="S.N",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
-    u_db_lbl2.place(relx=0.04,rely=0.17)
+    u_db_lbl2=tk.Label(u_db_frame3,text="Product Name",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
+    u_db_lbl2.place(relx=0.08,rely=0.17)
 
     #label
-    u_db_lbl3=tk.Label(u_db_frame3,text="Product Name",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
-    u_db_lbl3.place(relx=0.26,rely=0.17)
+    u_db_lbl3=tk.Label(u_db_frame3,text="Price",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
+    u_db_lbl3.place(relx=0.4,rely=0.17)
 
     #label
     u_db_lbl4=tk.Label(u_db_frame3,text="Quantity",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
     u_db_lbl4.place(relx=0.61,rely=0.17)
 
     #label
-    u_db_lbl5=tk.Label(u_db_frame3,text="Price",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
-    u_db_lbl5.place(relx=0.85,rely=0.17)
+    u_db_lbl5=tk.Label(u_db_frame3,text="Total Price",font=("Inter",15,"bold"),bg="#D9D9D9",fg="#2D2825")
+    u_db_lbl5.place(relx=0.82,rely=0.17)
 
 
     #separator frame
     u_db_sep_frame1=tk.Frame(u_db_frame3,bg="black")
-    u_db_sep_frame1.place(relwidth=0.005,relheight=1,relx=0.12)
+    u_db_sep_frame1.place(relwidth=0.005,relheight=1,relx=0.3)
 
     #separator frame 
     u_db_sep_frame2=tk.Frame(u_db_frame3,bg="black")
@@ -3335,7 +3335,7 @@ def user_dashboard():
 
     #separator frame
     u_db_sep_frame4=tk.Frame(u_db_frame4,bg="black")
-    u_db_sep_frame4.place(relwidth=0.005,relheight=1,relx=0.12)
+    u_db_sep_frame4.place(relwidth=0.005,relheight=1,relx=0.3)
 
     #separator frame 
     u_db_sep_frame5=tk.Frame(u_db_frame4,bg="black")
