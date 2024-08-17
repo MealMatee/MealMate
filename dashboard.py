@@ -2902,6 +2902,38 @@ def user_dashboard():
         if exit_reply==1:
             root.destroy()
 
+    def user_proceed_1():
+        pass
+    def user_proceed_2():
+        pass
+    def user_proceed_3():
+        pass
+    def user_proceed_4():
+        pass
+    def user_proceed_5():
+        pass
+    def user_proceed_6():
+        pass
+    def user_proceed_7():
+        pass
+    def user_proceed_8():
+        pass
+    def user_proceed_9():
+        pass
+    def user_proceed_10():
+        pass
+    def user_proceed_11():
+        pass
+    def user_proceed_12():
+        pass
+    def user_proceed_13():
+        pass
+    def user_proceed_14():
+        pass
+    def user_proceed_15():
+        pass
+
+
 
 
 
