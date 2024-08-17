@@ -1661,7 +1661,7 @@ def admin_dashboard():
         photo_u_db_img3tk=ImageTk.PhotoImage(u_db_img3)
         u_db_img3_lbl = tk.Label(u_db_button1, image=photo_u_db_img3tk,bg="#D9D9D9")
         u_db_img3_lbl.place(x=15, y=5, w=230, h=210)
-        u_db_label1=tk.Label(u_db_button1,text=f"Name: Chicken Burger\n  Price: Rs.350",font=("Inter",15),bg="#D9D9D9")
+        u_db_label1=tk.Label(u_db_button1,text=f"Name: {items_lst[0][0]}\n  Price: Rs.{price_lst[0][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label1.place(relx=0.1,rely=0.6)
 
     #button 2 in scrollable frame
@@ -1676,7 +1676,7 @@ def admin_dashboard():
         photo_u_db_img4tk=ImageTk.PhotoImage(u_db_img4)
         u_db_img4_lbl = tk.Label(u_db_button2, image=photo_u_db_img4tk,bg="#D9D9D9")
         u_db_img4_lbl.place(x=15, y=5, w=220, h=200)
-        u_db_label2=tk.Label(u_db_button2,text="Name: Chicken Pizza\n  Price: Rs.510",font=("Inter",15),bg="#D9D9D9")
+        u_db_label2=tk.Label(u_db_button2,text=f"Name: {items_lst[2][0]}\n  Price: Rs.{price_lst[2][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label2.place(relx=0.1,rely=0.6)
 
     #button 3 in scrollable frame
@@ -1691,7 +1691,7 @@ def admin_dashboard():
         photo_u_db_img5tk=ImageTk.PhotoImage(u_db_img5)
         u_db_img5_lbl = tk.Label(u_db_button3, image=photo_u_db_img5tk,bg="#D9D9D9")
         u_db_img5_lbl.place(x=10, y=5, w=210, h=190)
-        u_db_label3=tk.Label(u_db_button3,text="Name: Espresso\n   Price: Rs.210",font=("Inter",15),bg="#D9D9D9")
+        u_db_label3=tk.Label(u_db_button3,text=f"Name: {items_lst[1][0]}\n   Price: Rs.{price_lst[1][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label3.place(relx=0.17,rely=0.6)
 
     #button 4 in scrollable frame
@@ -1706,7 +1706,7 @@ def admin_dashboard():
         photo_u_db_img6tk=ImageTk.PhotoImage(u_db_img6)
         u_db_img6_lbl = tk.Label(u_db_button4, image=photo_u_db_img6tk,bg="#D9D9D9")
         u_db_img6_lbl.place(x=45, y=15, w=160, h=160)
-        u_db_label4=tk.Label(u_db_button4,text="   Name:Pepsi\n   Price: Rs.70",font=("Inter",15),bg="#D9D9D9")
+        u_db_label4=tk.Label(u_db_button4,text=f"   Name:{items_lst[3][0]}\n   Price: Rs.{price_lst[3][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label4.place(relx=0.16,rely=0.6)
 
     #button 5 in scrollable frame
@@ -1721,7 +1721,7 @@ def admin_dashboard():
         photo_u_db_img7tk=ImageTk.PhotoImage(u_db_img7)
         u_db_img7_lbl = tk.Label(u_db_button5, image=photo_u_db_img7tk,bg="#D9D9D9")
         u_db_img7_lbl.place(x=25, y=4, w=210, h=190)
-        u_db_label5=tk.Label(u_db_button5,text="Name: Drumstick\n   Price: Rs.110",font=("Inter",15),bg="#D9D9D9")
+        u_db_label5=tk.Label(u_db_button5,text=f"Name: {items_lst[4][0]}\n   Price: Rs.{price_lst[4][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label5.place(relx=0.17,rely=0.6)
 
     #button 6 in scrollable frame
@@ -1736,7 +1736,7 @@ def admin_dashboard():
         photo_u_db_img8tk=ImageTk.PhotoImage(u_db_img8)
         u_db_img8_lbl = tk.Label(u_db_button6, image=photo_u_db_img8tk,bg="#D9D9D9")
         u_db_img8_lbl.place(x=25, y=12, w=190, h=170)
-        u_db_label6=tk.Label(u_db_button6,text="Name: Cold Coffee\n   Price: Rs.280",font=("Inter",15),bg="#D9D9D9")
+        u_db_label6=tk.Label(u_db_button6,text=f"Name: {items_lst[5][0]}\n   Price: Rs.{price_lst[5][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label6.place(relx=0.15,rely=0.6)
 
     #button 7 in scrollable frame
@@ -1751,7 +1751,7 @@ def admin_dashboard():
         photo_u_db_img9tk=ImageTk.PhotoImage(u_db_img9)
         u_db_img9_lbl = tk.Label(u_db_button7, image=photo_u_db_img9tk,bg="#D9D9D9")
         u_db_img9_lbl.place(x=15, y=5, w=210, h=200)
-        u_db_label7=tk.Label(u_db_button7,text="Name: French Fries\n   Price: Rs.280",font=("Inter",15),bg="#D9D9D9")
+        u_db_label7=tk.Label(u_db_button7,text=f"Name: {items_lst[6][0]}\n   Price: Rs.{price_lst[6][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label7.place(relx=0.15,rely=0.6)
 
     #button 8 in scrollable frame
@@ -1766,7 +1766,7 @@ def admin_dashboard():
         photo_u_db_img10tk=ImageTk.PhotoImage(u_db_img10)
         u_db_img10_lbl = tk.Label(u_db_button8, image=photo_u_db_img10tk,bg="#D9D9D9")
         u_db_img10_lbl.place(x=40, y=17, w=160, h=160)
-        u_db_label8=tk.Label(u_db_button8,text="Name: CocaCola\n   Price: Rs.70",font=("Inter",15),bg="#D9D9D9")
+        u_db_label8=tk.Label(u_db_button8,text=f"Name: {items_lst[7][0]}\n   Price: Rs.{price_lst[7][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label8.place(relx=0.18,rely=0.6)
 
     #button 9 in scrollable frame
@@ -1781,7 +1781,7 @@ def admin_dashboard():
         photo_u_db_img11tk=ImageTk.PhotoImage(u_db_img11)
         u_db_img11_lbl = tk.Label(u_db_button9, image=photo_u_db_img11tk,bg="#D9D9D9")
         u_db_img11_lbl.place(x=40, y=15, w=180, h=160)
-        u_db_label9=tk.Label(u_db_button9,text="Name: Oreo Shake\n   Price: Rs.450",font=("Inter",15),bg="#D9D9D9")
+        u_db_label9=tk.Label(u_db_button9,text=f"Name: {items_lst[8][0]}\n   Price: Rs.{price_lst[8][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label9.place(relx=0.15,rely=0.6)
 
     #button 10 in scrollable frame
@@ -1796,7 +1796,7 @@ def admin_dashboard():
         photo_u_db_img12tk=ImageTk.PhotoImage(u_db_img12)
         u_db_img12_lbl = tk.Label(u_db_button10, image=photo_u_db_img12tk,bg="#D9D9D9")
         u_db_img12_lbl.place(x=25, y=5, w=200, h=200)
-        u_db_label10=tk.Label(u_db_button10,text="Name: Cappuccino\n   Price: Rs.200",font=("Inter",15),bg="#D9D9D9")
+        u_db_label10=tk.Label(u_db_button10,text=f"Name: {items_lst[9][0]}\n   Price: Rs.{price_lst[9][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label10.place(relx=0.15,rely=0.6)
         
     #button 11 in scrollable frame
@@ -1811,7 +1811,7 @@ def admin_dashboard():
         photo_u_db_img15tk=ImageTk.PhotoImage(u_db_img15)
         u_db_img15_lbl = tk.Label(u_db_button11, image=photo_u_db_img15tk,bg="#D9D9D9")
         u_db_img15_lbl.place(x=30, y=8, w=190, h=190)
-        u_db_label11=tk.Label(u_db_button11,text="Name: Chicken momo\n   Price: Rs.200",font=("Inter",15),bg="#D9D9D9")
+        u_db_label11=tk.Label(u_db_button11,text=f"Name: {items_lst[10][0]}\n   Price: Rs.{price_lst[10][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label11.place(relx=0.1,rely=0.6)
 
     #button 12 in scrollable frame
@@ -1819,7 +1819,7 @@ def admin_dashboard():
         u_db_button12.grid(row=2,column=3,padx=0,pady=20)
         u_db_btn15=CTkButton(u_db_button12,text="EDIT",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
         u_db_btn15.place(rely=0.8,relx=0.15,relheight=0.15)
-        u_db_label12=tk.Label(u_db_button12,text="    Name: Sprite\n   Price: Rs.70",font=("Inter",15),bg="#D9D9D9")
+        u_db_label12=tk.Label(u_db_button12,text=f"    Name: {items_lst[11][0]}\n   Price: Rs.{price_lst[11][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label12.place(relx=0.15,rely=0.6)
 
     #image and label for button 12
@@ -1841,7 +1841,7 @@ def admin_dashboard():
         photo_u_db_img14tk=ImageTk.PhotoImage(u_db_img14)
         u_db_img14_lbl = tk.Label(u_db_button13, image=photo_u_db_img14tk,bg="#D9D9D9")
         u_db_img14_lbl.place(x=45, y=15, w=160, h=160)
-        u_db_label13=tk.Label(u_db_button13,text="   Name: Fanta\n   Price: Rs.70",font=("Inter",15),bg="#D9D9D9")
+        u_db_label13=tk.Label(u_db_button13,text=f"   Name: {items_lst[12][0]}\n   Price: Rs.{price_lst[12][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label13.place(relx=0.15,rely=0.6)
 
     #button 14 in scrollable frame
@@ -1856,7 +1856,7 @@ def admin_dashboard():
         photo_u_db_img16tk=ImageTk.PhotoImage(u_db_img16)
         u_db_img16_lbl = tk.Label(u_db_button14, image=photo_u_db_img16tk,bg="#D9D9D9")
         u_db_img16_lbl.place(x=25, y=5, w=200, h=200)
-        u_db_label14=tk.Label(u_db_button14,text="Name: Chicken Chowmein\n   Price: Rs.250",font=("Inter",15),bg="#D9D9D9")
+        u_db_label14=tk.Label(u_db_button14,text=f"Name: {items_lst[13][0]}\n   Price: Rs.{price_lst[0][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label14.place(relx=0.04,rely=0.6)
 
     #button 15 in scrollable frame
@@ -1870,7 +1870,7 @@ def admin_dashboard():
         photo_u_db_img17tk=ImageTk.PhotoImage(u_db_img17)
         u_db_img17_lbl = tk.Label(u_db_button15, image=photo_u_db_img17tk,bg="#D9D9D9")
         u_db_img17_lbl.place(x=10, y=5, w=235, h=180)
-        u_db_label15=tk.Label(u_db_button15,text="Name: Chicken Biryani\n   Price: Rs.250",font=("Inter",15),bg="#D9D9D9")
+        u_db_label15=tk.Label(u_db_button15,text=f"Name: {items_lst[14][0]}\n   Price: Rs.{price_lst[14][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label15.place(relx=0.1,rely=0.6)
 
         
