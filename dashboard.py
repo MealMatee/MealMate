@@ -462,6 +462,9 @@ def admin_login():
         '''
         this function is made to show a message when user clicks submit on win1 window
         '''
+
+
+
         areset_pass_main_frame.place_forget()
         asign_sec_qsn_frame.place_forget()
         areset_pass_frame.place_forget()
@@ -1232,7 +1235,7 @@ def admin_signup():
             
             #inserting data into the database (admin)
             c.execute('''INSERT INTO admin (first_name, last_name, email, password, sec_ans1, sec_ans2, sec_ans3) 
-                         VALUES (?,?,?,?)''',
+                         VALUES (?,?,?,?,?,?,?)''',
                          ((asignup_e1.get()).capitalize(),asignup_e2.get().capitalize(),asignup_e3.get(),asignup_e4.get(),asec_entry1.get(), asec_entry2.get(), asec_entry3.get())
                      )
             
@@ -1447,6 +1450,19 @@ def admin_dashboard():
     main_frame6.place(relheight=1,relwidth=1,relx=0,rely=0)
 
 
+    #--------------------------------------------------------database-------------------------------------------------------------#
+        #connecting to database
+    global admin_data
+    conn = sqlite3.connect('mealmate.db')
+    c = conn.cursor()
+        #fetching data of admin table
+    c.execute("SELECT * FROM admin WHERE email = ? and password = ?", (a_email, a_password))
+    admin_data = c.fetchall()
+
+        #close connection
+    conn.close()
+        #-----------------------------------------------------------------------------------------------------------------------------#
+
     def on_hover(enter):
         '''to change the text colour and image of button on entering the widget'''
         admin_db_btn2.configure(image=a_db_img5ctk,text_color="#33303C",fg_color="#F38686",hover_color="#F38686")
@@ -1574,7 +1590,7 @@ def admin_dashboard():
         a_db_lbl6.place(relx=0.26,rely=0.78)
 
     #admin name label after welcome label
-        a_db_lbl7=tk.Label(admin_db_frame3,text="Dristi",font=("Inter",60,"bold"),bg="White",fg="#DD2323")
+        a_db_lbl7=tk.Label(admin_db_frame3,text=admin_data[0][0],font=("Inter",60,"bold"),bg="White",fg="#DD2323")
         a_db_lbl7.place(relx=0.55,rely=0.78)
         
 
@@ -1942,7 +1958,7 @@ def admin_dashboard():
     a_db_lbl3.place(relx=0.15,rely=0.05)
 
     #Button used as a container to display text
-    a_db_btn8=CTkButton(admin_db_frame4,text="          Dristi",text_color="#DD2323",fg_color="#D9D9D9",hover=0,font=("Regular",15),corner_radius=14)
+    a_db_btn8=CTkButton(admin_db_frame4,text=f"          {admin_data[0][0]}",text_color="#DD2323",fg_color="#D9D9D9",hover=0,font=("Regular",15),corner_radius=14)
     a_db_btn8.place(relx=0.4,rely=0.1,relwidth=0.18)
     a_db_lbl4=tk.Label(a_db_btn8,text="Name:",fg="#33303C",font=("Regular",15),bg="#D9D9D9")
     a_db_lbl4.place(relx=0.15,rely=0.05)
