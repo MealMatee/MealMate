@@ -2142,7 +2142,7 @@ def user_dashboard():
 
         #update password
         tk.messagebox.showinfo("success message","user profile customization successful")
-        customize_win.destroy()
+        customize_main_frame.place_forget()
             
         #--------------------------------------------------------------------------------------------------------#
 
@@ -2174,35 +2174,19 @@ def user_dashboard():
         c.execute("SELECT * FROM user WHERE email =? and password = ?", (u_email,u_password))
         user_data = c.fetchall()
         #-------------------------------------------------------------------------------------------#
-        def u_db_onclick2():
-            '''
-            it is made so that we can hide or show password clicking the eye button
-            '''
-            if customize_entry4.cget("show") == "":
-                customize_entry4.configure(show="*")
-            else:
-                customize_entry4.configure(show="")
-
-        def u_db_onclick3():
-            '''
-            it is made so that we can hide or show password clicking the eye button
-            '''
-            if customize_entry5.cget("show") == "":
-                customize_entry5.configure(show="*")
-            else:
-                customize_entry5.configure(show="")
-
+        
+        global customize_main_frame
         customize_main_frame=tk.Frame(root,bg="white")
         customize_main_frame.place(relheight=1,relwidth=1,relx=0,rely=0)
 
 
-        global customize_entry1, customize_entry2, customize_entry3, customize_entry4, customize_entry5, customize_entry0
+        global customize_entry1, customize_entry2
     #frame
-        customize_frame1=tk.Frame(customize_main_frame,width=712,height=970,bg="white")
+        customize_frame1=tk.Frame(customize_main_frame,width=712,height=960,bg="white")
         customize_frame1.place(x=0,y=0)
     #frame
         customize_frame3=CTkFrame(customize_frame1,corner_radius=18,fg_color="#D9D9D9")
-        customize_frame3.place(relx=0.1,rely=0.05,relwidth=0.9,relheight=0.9)
+        customize_frame3.place(relx=0.1,rely=0.15,relwidth=0.9,relheight=0.7)
 
     #user profile label
         customize_lbl2=tk.Label(customize_frame3,text="USER PROFILE",font=("Inter",26,"bold"),fg="#5B6E80",bg="#D9D9D9")
@@ -2214,6 +2198,7 @@ def user_dashboard():
     #firstname entrybox
         customize_entry1=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text=user_data[0][0],placeholder_text_color="#97D5C9")
         customize_entry1.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.15)
+        customize_entry1.configure(state="disabled")
 
     #lastname label
         customize_lbl4=tk.Label(customize_frame3,text="LastName:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
@@ -2221,6 +2206,7 @@ def user_dashboard():
     #lastname entrybox
         customize_entry2=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text=user_data[0][1],placeholder_text_color="#97D5C9")
         customize_entry2.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.28)
+        customize_entry2.configure(state="disabled")
     #Email label
         customize_lbl5=tk.Label(customize_frame3,text="Email:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
         customize_lbl5.place(relx=0.07,rely=0.36)
@@ -2228,7 +2214,7 @@ def user_dashboard():
         customize_email_frame=CTkFrame(customize_frame3,corner_radius=12,border_width=2,border_color="#5B6E80",fg_color="white")
         customize_email_frame.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.41)
         customize_email_label=tk.Label(customize_email_frame,fg="#97D5C9",bg="white",font=("Inter",17),text=user_data[0][2])
-        customize_email_label.place(relx=0.03,rely=0.25)
+        customize_email_label.place(relx=0.03,rely=0.18)
 
     #eyebutton
         customize_eye_img1=Image.open("pictures/ion_eyegrey_eye.png")
@@ -2241,33 +2227,12 @@ def user_dashboard():
         customize_pass_frame=CTkFrame(customize_frame3,corner_radius=12,border_width=2,border_color="#5B6E80",fg_color="white")
         customize_pass_frame.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.54)
         customize_pass_label=tk.Label(customize_pass_frame,fg="#97D5C9",bg="white",font=("Inter",17),text=user_data[0][3])
-        customize_pass_label.place(relx=0.03,rely=0.25)
+        customize_pass_label.place(relx=0.03,rely=0.18)
 
-    # new password label
-        customize_lbl7=tk.Label(customize_frame3,text="NewPassword:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
-        customize_lbl7.place(relx=0.07,rely=0.62)
-    # new password entrybox
-        customize_entry4=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text="NewPassword",placeholder_text_color="#97D5C9",show="*")
-        customize_entry4.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.67)
-    # new password eyebutton
-        customize_entry_btn2=tk.Button(customize_entry4,bg="white",bd=0,activebackground="white",image=customize_eye_img1tk,command=u_db_onclick2)
-        customize_entry_btn2.image=customize_eye_img1tk
-        customize_entry_btn2.place(relx=0.92,rely=0.28)
-
-    #retype new password label
-        customize_lbl8=tk.Label(customize_frame3,text="Re-Type NewPassword:",font=("Inter",20,"italic"),fg="#5B6E80",bg="#D9D9D9")
-        customize_lbl8.place(relx=0.07,rely=0.75)
-        #retype new password Entrybox
-        customize_entry5=CTkEntry(customize_frame3,corner_radius=12,fg_color="white",border_color="#5B6E80",text_color="#97D5C9",font=("Inter",17),placeholder_text="Re-Type NewPassword",placeholder_text_color="#97D5C9",show="*")
-        customize_entry5.place(relwidth=0.85,relheight=0.07,relx=0.07,rely=0.80)
-        #retype new password eye button
-        customize_entry_btn3=tk.Button(customize_entry5,bg="white",bd=0,activebackground="white",image=customize_eye_img1tk,command=u_db_onclick3)
-        customize_entry_btn3.image=customize_eye_img1tk
-        customize_entry_btn3.place(relx=0.92,rely=0.28)
 
     #confirm button
         customize_button=CTkButton(customize_frame3,text="CONFIRM",font=("Inter",15,"bold"),fg_color="#97D5C9",text_color="#5B6E80",command=custom_confirm)
-        customize_button.place(relx=0.35,rely=0.91,relheight=0.06)
+        customize_button.place(relx=0.35,rely=0.8,relheight=0.08)
 
     #frame
         customize_frame2=tk.Frame(customize_main_frame,width=700,height=1080,bg="white")
@@ -2319,7 +2284,7 @@ def user_dashboard():
 
 
     #customize profile button
-    u_db_btn2=CTkButton(u_db_frame1,text="CUSTOMIZE PROFILE",fg_color="Black",text_color="white",hover=0,font=("Inter",12,"bold"),command=customize)
+    u_db_btn2=CTkButton(u_db_frame1,text="USER DETAILS",fg_color="Black",text_color="white",hover=0,font=("Inter",12,"bold"),command=customize)
     u_db_btn2.place(relwidth=0.1,relheight=0.45,relx=0.74,rely=0.3)
 
     #logout button
