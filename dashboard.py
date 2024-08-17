@@ -3038,7 +3038,6 @@ def user_dashboard():
     u_db_frame1=tk.Frame(u_db_mainframe,bg="#ACACAC")
     u_db_frame1.place(relwidth=1,relheight=0.12,relx=0,rely=0)
 
-    # items_lst=["Chicken Burger","Espresso","Chicken Pizza","Pepsi","Drumstick","Cold Coffee","French Fries", "CocaCola","Oreo Shake","Cappuccino","Chicken MoMo","Sprite","Fanta","Chicken Chowmein","Chicken Biryani"]
 
     #logo
     u_db_logo=Image.open("pictures\\Rectangle 41.png")
@@ -3092,7 +3091,7 @@ def user_dashboard():
     #button 1 in scrollable frame
         u_db_button1=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button1.grid(row=0,column=0,padx=20,pady=20)
-        u_db_btn4=CTkButton(u_db_button1,text="PROCEED",font=("Inter",18,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn4=CTkButton(u_db_button1,text="PROCEED",font=("Inter",18,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_1)
         u_db_btn4.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 1
@@ -3107,7 +3106,7 @@ def user_dashboard():
     #button 2 in scrollable frame
         u_db_button2=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button2.grid(row=0,column=2,padx=20,pady=20)
-        u_db_btn5=CTkButton(u_db_button2,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn5=CTkButton(u_db_button2,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_3)
         u_db_btn5.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 2
@@ -3122,7 +3121,7 @@ def user_dashboard():
     #button 3 in scrollable frame
         u_db_button3=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button3.grid(row=0,column=1,padx=0,pady=0)
-        u_db_btn6=CTkButton(u_db_button3,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn6=CTkButton(u_db_button3,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_2)
         u_db_btn6.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 3
@@ -3137,7 +3136,7 @@ def user_dashboard():
     #button 4 in scrollable frame
         u_db_button4=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button4.grid(row=1,column=0,rowspan=1,padx=20,pady=0)
-        u_db_btn7=CTkButton(u_db_button4,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn7=CTkButton(u_db_button4,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_4)
         u_db_btn7.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 4
@@ -3152,7 +3151,7 @@ def user_dashboard():
     #button 5 in scrollable frame
         u_db_button5=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button5.grid(row=1,column=1,rowspan=1,padx=0,pady=0)
-        u_db_btn8=CTkButton(u_db_button5,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn8=CTkButton(u_db_button5,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_5)
         u_db_btn8.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 5
@@ -3167,7 +3166,7 @@ def user_dashboard():
     #button 6 in scrollable frame
         u_db_button6=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button6.grid(row=1,column=2,rowspan=1,padx=20,pady=0)
-        u_db_btn9=CTkButton(u_db_button6,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn9=CTkButton(u_db_button6,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_6)
         u_db_btn9.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 6
@@ -3182,7 +3181,7 @@ def user_dashboard():
     #button 7 in scrollable frame
         u_db_button7=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button7.grid(row=2,column=0,rowspan=1,padx=20,pady=20)
-        u_db_btn10=CTkButton(u_db_button7,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn10=CTkButton(u_db_button7,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_7)
         u_db_btn10.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 7
@@ -3197,7 +3196,7 @@ def user_dashboard():
     #button 8 in scrollable frame
         u_db_button8=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button8.grid(row=2,column=1,rowspan=1,padx=0,pady=0)
-        u_db_btn11=CTkButton(u_db_button8,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn11=CTkButton(u_db_button8,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_8)
         u_db_btn11.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 8
@@ -3212,7 +3211,7 @@ def user_dashboard():
     #button 9 in scrollable frame
         u_db_button9=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button9.grid(row=2,column=2,rowspan=1,padx=20,pady=20)
-        u_db_btn12=CTkButton(u_db_button9,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn12=CTkButton(u_db_button9,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_9)
         u_db_btn12.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 9
@@ -3227,7 +3226,7 @@ def user_dashboard():
     #button 10 in scrollable frame
         u_db_button10=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button10.grid(row=3,column=0,rowspan=1,padx=20,pady=0)
-        u_db_btn13=CTkButton(u_db_button10,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn13=CTkButton(u_db_button10,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_10)
         u_db_btn13.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 10
@@ -3242,7 +3241,7 @@ def user_dashboard():
     #button 11 in scrollable frame
         u_db_button11=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button11.grid(row=3,column=1,rowspan=1,padx=0,pady=0)
-        u_db_btn14=CTkButton(u_db_button11,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn14=CTkButton(u_db_button11,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_11)
         u_db_btn14.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 11
@@ -3257,7 +3256,7 @@ def user_dashboard():
     #button 12 in scrollable frame
         u_db_button12=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button12.grid(row=3,column=2,rowspan=1,padx=20,pady=0)
-        u_db_btn15=CTkButton(u_db_button12,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn15=CTkButton(u_db_button12,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_12)
         u_db_btn15.place(rely=0.8,relx=0.15,relheight=0.15)
         u_db_label12=tk.Label(u_db_button12,text=f"    Name: {items_lst[11][0]}\n   Price: Rs.{price_lst[11][0]}",font=("Inter",15),bg="#D9D9D9")
         u_db_label12.place(relx=0.15,rely=0.6)
@@ -3272,7 +3271,7 @@ def user_dashboard():
     #button 13 in scrollable frame
         u_db_button13=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button13.grid(row=4,column=0,rowspan=1,padx=20,pady=20)
-        u_db_btn16=CTkButton(u_db_button13,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn16=CTkButton(u_db_button13,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_13)
         u_db_btn16.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 13
@@ -3287,7 +3286,7 @@ def user_dashboard():
     #button 14 in scrollable frame
         u_db_button14=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button14.grid(row=4,column=1,rowspan=1,padx=0,pady=20)
-        u_db_btn17=CTkButton(u_db_button14,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn17=CTkButton(u_db_button14,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_14)
         u_db_btn17.place(rely=0.8,relx=0.15,relheight=0.15)
 
     #image and label for button 14
@@ -3302,7 +3301,7 @@ def user_dashboard():
     #button 15 in scrollable frame
         u_db_button15=CTkButton(u_db_sframe,width=200,height=250,fg_color="#D9D9D9",hover=0,border_width=3,border_color="#ED8937")
         u_db_button15.grid(row=4,column=2,rowspan=1,padx=20,pady=20)
-        u_db_btn18=CTkButton(u_db_button15,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937")
+        u_db_btn18=CTkButton(u_db_button15,text="PROCEED",font=("Inter",20,"bold"),text_color="white",fg_color="#C8302B",corner_radius=10,hover_color="#ED8937",command=user_proceed_15)
         u_db_btn18.place(rely=0.8,relx=0.15,relheight=0.15)
     #image and label for button 15 
         u_db_img17=Image.open("pictures/pngegg (4) 2Biryani.png")
