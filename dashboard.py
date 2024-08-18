@@ -2910,91 +2910,91 @@ def user_dashboard():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[0][0]}                     Rs.{price_lst[0][0]}                       x{count+1}                           Rs.{(price_lst[0][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[0][0]
     def user_proceed_2():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[1][0]}                               Rs.{price_lst[1][0]}                       x{count+1}                           Rs.{(price_lst[1][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[1][0]
     def user_proceed_3():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[2][0]}                        Rs.{price_lst[2][0]}                       x{count+1}                           Rs.{(price_lst[2][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[2][0]
     def user_proceed_4():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[3][0]}                                     Rs.{price_lst[3][0]}                         x{count+1}                           Rs.{(price_lst[3][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[3][0]
     def user_proceed_5():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[4][0]}                              Rs.{price_lst[4][0]}                       x{count+1}                           Rs.{(price_lst[4][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[4][0]
     def user_proceed_6():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[5][0]}                           Rs.{price_lst[5][0]}                        x{count+1}                           Rs.{(price_lst[5][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[5][0]
     def user_proceed_7():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[6][0]}                          Rs.{price_lst[6][0]}                        x{count+1}                           Rs.{(price_lst[6][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[6][0]
     def user_proceed_8():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[7][0]}                               Rs.{price_lst[7][0]}                         x{count+1}                           Rs.{(price_lst[7][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[7][0]
     def user_proceed_9():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[8][0]}                            Rs.{price_lst[8][0]}                       x{count+1}                           Rs.{(price_lst[8][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[8][0]
     def user_proceed_10():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[9][0]}                            Rs.{price_lst[9][0]}                       x{count+1}                           Rs.{(price_lst[9][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[9][0]
     def user_proceed_11():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[10][0]}                       Rs.{price_lst[10][0]}                       x{count+1}                           Rs.{(price_lst[10][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[10][0]
     def user_proceed_12():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[11][0]}                                    Rs.{price_lst[11][0]}                         x{count+1}                           Rs.{(price_lst[11][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[11][0]
     def user_proceed_13():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[12][0]}                                     Rs.{price_lst[12][0]}                         x{count+1}                           Rs.{(price_lst[12][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[12][0]
     def user_proceed_14():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[13][0]}                Rs.{price_lst[13][0]}                       x{count+1}                           Rs.{(price_lst[13][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[13][0]
     def user_proceed_15():
         global total_price
         count = 0
         menu_lbl1 = tk.Label(u_db_frame4,text = f"           {items_lst[14][0]}                     Rs.{price_lst[14][0]}                       x{count+1}                           Rs.{(price_lst[14][0])*(count+1)}", font = ('Inter', 15, 'bold'),bg="#D9D9D9")
-        menu_lbl1.pack(anchor = NW)
+        menu_lbl1.pack(anchor = NW,pady=10)
         total_price += price_lst[14][0]
 
 
