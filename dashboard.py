@@ -2878,6 +2878,7 @@ def user_dashboard():
         u_db_button9.grid(row=1,column=1,padx=10,pady=10)
         u_db_button10.grid(row=1,column=2,padx=0,pady=0)
         u_db_button12.grid(row=2,column=0,padx=10,pady=10)
+        u_db_button13.grid(row=2,column=1,padx=0,pady=0)
 
 
 
@@ -2904,8 +2905,9 @@ def user_dashboard():
 
 
 #----------------------------------------------------------------------------------------------------------------------#
-    global total_price
+    global total_price,name_lst
     total_price=0
+    name_lst=[]
     def user_proceed_1():
         global total_price
         count = 0
@@ -3396,6 +3398,17 @@ def user_dashboard():
 
     u_db_framee=CTkFrame(u_db_frame,fg_color="#D9D9D9",corner_radius=10)
     u_db_framee.place(relwidth=1,relheight=0.12, rely = 0.85)
+    
+    def show_total():
+        u_db_ttllbl=tk.Label(u_db_framee,text=f"Total:Rs. {total_price}",font = ("Inter",15),bg="#D9D9D9")
+        u_db_ttllbl.place(relx=0.5,rely=0.35)
+    
+    u_db_ttlbtn=tk.Button(u_db_framee,text="Total", font = ("Inter",15,"bold"),bg="#D9D9D9",command=show_total)
+    u_db_ttlbtn.place(relx=0.35,rely=0.26,relwidth=0.13)
+
+
+
+
 
 
 
