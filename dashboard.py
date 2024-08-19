@@ -3560,10 +3560,15 @@ def user_dashboard():
     
     def show_total():
         u_db_ttllbl=tk.Label(u_db_framee,text=f"Total:Rs. {total_price}",font = ("Inter",15),bg="#D9D9D9")
-        u_db_ttllbl.place(relx=0.5,rely=0.35)
+        u_db_ttllbl.place(relx=0.8,rely=0.35)
     
+    #the total button
     u_db_ttlbtn=tk.Button(u_db_framee,text="Total", font = ("Inter",15,"bold"),bg="#D9D9D9",command=show_total)
-    u_db_ttlbtn.place(relx=0.35,rely=0.26,relwidth=0.13)
+    u_db_ttlbtn.place(relx=0.65,rely=0.28,relwidth=0.13)
+
+    #payment option label
+    u_db_ttlbtn=CTkButton(u_db_framee,text="Payment Option: Cash", font = ("Inter",15,"bold"),fg_color="#D9D9D9",border_width=2,border_color="Black",text_color="Black",corner_radius=0,hover=0)
+    u_db_ttlbtn.place(relx=0.05,rely=0.25,relwidth=0.26,relheight=0.5)
 
 
 
